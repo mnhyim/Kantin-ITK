@@ -1,9 +1,9 @@
 import datetime
 
 class Titipan:
-    
+
     # Constructor
-    def __init__(self, idBarang, namaPenitip, namaBarang, harga, jumlahTitipan, tanggal):
+    def __init__(self, idBarang = None, namaPenitip = None, namaBarang = None, harga = None, jumlahTitipan = None, tanggal = None):
         self.__idBarang = idBarang
         self.__namaPenitip = namaPenitip
         self.__namaBarang = namaBarang

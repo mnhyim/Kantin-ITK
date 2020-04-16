@@ -3,7 +3,7 @@ import datetime
 class DataKas:
     
     # Constructor
-    def __init__(self, idKas, tanggal, pemasukan, pengeluaran, labaBersih):
+    def __init__(self, idKas = None, tanggal = None, pemasukan = None, pengeluaran = None, labaBersih = None):
         self.__idKas = idKas
         self.__tanggal = tanggal
         self.__pemasukan = pemasukan
