@@ -31,3 +31,28 @@ class Admin:
 
     def lihat_user_saldo(self):
         return self.jumlah_saldo
+   
+    def tambah_user_pembeli(self, user):
+        self.userpembeli = user
+
+    def lihat_user_pembeli(self):
+        return self.userpembeli
+        
+    def tambah_pass_pembeli(self, pswd):
+        self.pswdpembeli = pswd
+
+    def lihat_pass_pembeli(self):
+        return self.pswdpembeli
+
+    def tambah_akun_penjual(self, user):
+        self.userpenjual = user
+
+    def lihat_user_penjual(self):
+        return self.userpenjual
+        
+    def tambah_pass_penjual(self, pswd):
+        self.pswdpenjual = pswd
+
+    def lihat_pass_penjual(self):
+        return self.pswdpenjual  
+
