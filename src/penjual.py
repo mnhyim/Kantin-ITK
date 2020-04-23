@@ -1,21 +1,28 @@
 class penjual:
-    def __init__(self):
-        self._idpenjual = 0
-        self._namapenjual = None
-    def get_idpenjual(self):
+    def __init__(self, idpenjual, namapenjual):
+        self._idpenjual = idpenjual
+        self._namapenjual = namapenjual
+
+    @property
+    def semua(self):
+        return "id penjual : {} \nnamapenjual : {}".format(self._idpenjual,self._namapenjual)
+
+    @property
+    def idpenjual(self):
         return self._idpenjual
-    def set_idpenjual(self, x):
+
+    @idpenjual.setter
+    def idpenjual(self, x):
         self._idpenjual = x
 
-    def get_namapenjual(self):
+    @property
+    def namapenjual(self):
         return self._namapenjual
-    def set_namapenjual(self, x):
+
+    @namapenjual.setter
+    def namapenjual(self, x):
         self._namapenjual = x
 
+# pj = penjual(1,"mamak ica")
+# print(pj.semua)
 
-# pj = penjual()
-# pj.set_idpenjual([1,2])
-# pj.set_namapenjual(['mamak ica', 'ibu ida'])
-#
-# print(pj.get_idpenjual())
-# print(pj.get_namapenjual())
