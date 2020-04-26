@@ -1,16 +1,16 @@
-from ItemMenu import itemMenu
+from ItemMenu import im
 
-
-class KumpulanMenu:
+class Kumpulan:
     def __init__(self):
-        self._itemmenu = itemMenu.get_itemMenu()
+        self._item = im.item
 
-    def get_itemmenu(self):
-        return self._itemmenu
-    def set_itemmenu(self, x):
-        self._itemmenu = x
+    @property
+    def item(self):
+        return self._item
 
-# km = KumpulanMenu()
-# print(km.get_itemmenu())
-
-
+    @item.setter
+    def item(self, x):
+        self._item = x
+   
+# km = Kumpulan()
+# print(km.item)
