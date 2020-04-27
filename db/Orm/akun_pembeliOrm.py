@@ -8,7 +8,7 @@ class akun_pembeliOrm(Base):
     username = Column(String, unique=True)
     password = Column(String)
     idpembeli = Column(Integer, primary_key = True)
-    nama_Pembeli = Column(String)
+    nama_pembeli = Column(String)
 
     def __init__(self, username, password,idpembeli,nama_pembeli):
         self.username = username
