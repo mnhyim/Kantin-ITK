@@ -1,3 +1,4 @@
+from db.base import sessionFactory
 from db.Orm.ItemMenuOrm import ItemMenuOrm
 
 class itemMenu:
