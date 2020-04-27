@@ -1,3 +1,5 @@
+from db.Orm.ItemMenuOrm import ItemMenuOrm
+
 class itemMenu:
     def __init__(self, idMenu, item, hargaitem):
         self._idMenu = idMenu
