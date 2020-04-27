@@ -8,7 +8,7 @@ class TitipanOrm(Base):
     idBarang = Column(Integer, primary_key = True)
     namaPenitip = Column(String)
     namaBarang = Column(String)
-    hargaBarang = Column(String)
+    hargaBarang = Column(Integer)
     jumlahBarang = Column(Integer)
     tanggalPenitipan = Column(Date)
 
