@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer
-from base import Base, sessionFactory
+from db.base import Base, sessionFactory
 
 
 class SaldoOrm(Base):
