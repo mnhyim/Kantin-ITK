@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Integer, Date
 from db.base import Base, sessionFactory
 
 
-class TitipanOrm(Base):
+class ItemMenuOrm(Base):
     __tablename__ = 'Item Menu'
 
     idMenu = Column(Integer, primary_key = True)
