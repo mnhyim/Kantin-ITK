@@ -1,6 +1,6 @@
 from src.Class.Akun import Akun
-from src.db.Base import sessionFactory
-from src.db.orm.ormAkun import AdminOrm
+from src.ORM.Base import sessionFactory
+from src.ORM.ormAkun import AdminOrm
 
 
 class Admin(Akun):

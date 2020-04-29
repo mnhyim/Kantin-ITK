@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Date, Integer
-from src.db.Base import Base
+from src.ORM.Base import Base
 
 
 class KasOrm(Base):

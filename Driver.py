@@ -1,9 +1,9 @@
-from src.Admin import Admin
-from src.Penjual import Penjual
-from src.Pembeli import Pembeli
-from src.Kas import DataKas
-from src.Transaksi import *
-from src.Menu import *
+from src.Class.Admin import Admin
+from src.Class.Penjual import Penjual
+from src.Class.Pembeli import Pembeli
+from src.Class.Kas import DataKas
+from src.Class.Transaksi import *
+from src.Class.Menu import *
 
 # Admin
 a = Admin(1,'XXX',1)

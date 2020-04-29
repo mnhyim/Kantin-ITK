@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enumorm
 
 # ENUM
 class JenisAkun(Enum):

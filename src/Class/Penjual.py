@@ -1,6 +1,6 @@
 from src.Class.Akun import Akun
-from src.db.Base import sessionFactory
-from src.db.orm.ormAkun import PenjualOrm
+from src.ORM.Base import sessionFactory
+from src.ORM.ormAkun import PenjualOrm
 
 class Penjual(Akun):
     def __init__(self, id, nama, JenisAkun, saldo):

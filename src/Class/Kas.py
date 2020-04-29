@@ -1,6 +1,6 @@
 from datetime import datetime
-from src.db.Base import sessionFactory
-from src.db.orm.ormKas import KasOrm
+from src.ORM.Base import sessionFactory
+from src.ORM.ormKas import KasOrm
 
 class DataKas:
     def __init__(self,id,pemasukan,pengeluaran):

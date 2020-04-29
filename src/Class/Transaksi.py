@@ -1,6 +1,6 @@
-from src.db.Base import sessionFactory
+from src.ORM.Base import sessionFactory
 from datetime import datetime
-from src.db.orm.ormTransaksi import TransaksiOrm
+from src.ORM.ormTransaksi import TransaksiOrm
 
 class Transaksi:
     def __init__(self,id,jenisTransaksi,totalTransaksi):

@@ -1,6 +1,6 @@
 from src.Class.JenisItem import JenisItem
-from src.db.Base import sessionFactory
-from src.db.orm.ormMenu import MenuItemOrm
+from src.ORM.Base import sessionFactory
+from src.ORM.ormMenu import MenuItemOrm
 
 class Menu:
     def __init__(self,id,namaPenjual,menuItem):

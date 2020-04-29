@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, Enum
 from src.Class.JenisAkun import JenisAkun
-from src.db.Base import Base
+from src.ORM.Base import Base
 
 class AdminOrm(Base):
     __tablename__ = 'Admin'
