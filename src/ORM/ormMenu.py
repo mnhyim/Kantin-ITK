@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, Enum
-from src.Class.JenisItem import JenisItem
+from src.Class.EnumClass import  JenisItem
 from src.ORM.Base import Base
 
 class Menu(Base):

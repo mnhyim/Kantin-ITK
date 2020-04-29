@@ -1,4 +1,4 @@
-from src.Class.JenisItem import JenisItem
+from src.Class.EnumClass import JenisItem
 from src.ORM.Base import sessionFactory
 from src.ORM.ormMenu import MenuItemOrm
 

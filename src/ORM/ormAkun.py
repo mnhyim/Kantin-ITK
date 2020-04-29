@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, Enum
-from src.Class.JenisAkun import JenisAkun
+from src.Class.EnumClass import JenisAkun
 from src.ORM.Base import Base
 
 class AdminOrm(Base):

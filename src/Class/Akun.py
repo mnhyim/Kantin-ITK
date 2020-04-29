@@ -1,4 +1,4 @@
-from src.Class.JenisAkun import JenisAkun
+from src.Class.EnumClass import JenisAkun
 
 class Akun:
     def __init__(self,id,nama,jenisAkun):
