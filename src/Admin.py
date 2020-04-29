@@ -1,8 +1,8 @@
 from base import sessionFactory
 #from db.Orm.AdminOrm import AdminOrm
-from db.Orm.SaldoOrm import SaldoOrm
-from db.Orm.akun_pembeliOrm import akun_pembeliOrm
-from db.Orm.akun_penjualOrm import akun_penjualOrm
+from SaldoOrm import SaldoOrm
+from akun_pembeliOrm import akun_pembeliOrm
+from akun_penjualOrm import akun_penjualOrm
 
 class Admin:
     def __init__(self, idAdmin, namaAdmin, user_saldo=None, jumlah_saldo=None, userpembeli=None, pswdpembeli=None, userpenjual=None, pswdpenjual=None):
@@ -29,10 +29,36 @@ class Admin:
     def setNama(self, Nama):
         self.namaAdmin = Nama
 
-    def tambah_saldo(self, user, saldo):
+    def set_user_saldo(self, username):
+        self.user_saldo = username
+
+    def get_user_saldo(self):
+        return self.user_saldo
+
+    def set_jumlah_saldo(self, username):
+        self.jumlah_saldo = username
+
+    def get_jumalah_saldo(self):
+        return self.jumlah_saldo
+
+    def set_username_pembeli(self, username):
+        self.userpembeli = username
+    
+    def get_username_pembeli(self):
+        retun self.userpembeli
+
+    def set_username_pembeli(self, username):
+        self.userpembeli = username
+    
+    def get_username_penjuak(self):
+        retun self.userpenjual
+
+    #Orm
+    """
+    def tambah_saldo(self, nama, user, saldo):
         try:
             session = sessionFactory()
-            saldoOrm = SaldoOrm(user, saldo)
+            saldoOrm = SaldoOrm(nama, user, saldo)
             session.add(saldoOrm)
             session.commit()
             session.close()
@@ -46,8 +72,8 @@ class Admin:
             newuserSaldo = input("Masukkan Username: ")
             newjumlahSaldo = input("Masukkan Jumlah Saldo: ")
             session = sessionFactory()
-            session.query(SaldoOrm).filter_by(user_saldo=user_saldo).update({
-                SaldoOrm.user_saldo: newuserSaldo, 
+            session.query(SaldoOrm).filter_by(user_saldo=username).update({
+                SaldoOrm.username: newuserSaldo, 
                 SaldoOrm.jumlah_saldo: newjumlahSaldo}, synchronize_session=False)
             session.commit()
             session.close()
@@ -60,12 +86,11 @@ class Admin:
         try:
             session = sessionFactory()
             for user in session.query(SaldoOrm).all():
-                print("id = {}\nUsername = {}\nJumlah Saldo = {}\n===================="
-                .format(user.id, user.user_saldo, user.jumlah_saldo))
+                print("Nama = {}\nUsername = {}\nJumlah Saldo = {}\n====================".format(user.namaPembeli, user.username, user.jumlah_saldo))
             session.close()
         except Exception as e:
             print(">>>", e)
-    
+    """
     def tambah_akun_pembeli(self, nama, username, password):
         try:
             session = sessionFactory()
@@ -78,7 +103,7 @@ class Admin:
         else:
             print("Akun Berhasil Disimpan!")
 
-    def update_akun_pembeli(idPembeli):
+    def update_akun_pembeli(self, idPembeli):
         try:
             newnamaPembeli = input("Masukkan Nama: ")
             newuserPembeli = input("Masukkan Username: ")
@@ -93,7 +118,18 @@ class Admin:
         except Exception as e:
             print(">>>", e)
         else:
-            print("Akun Berhasil Diupdate!")   
+            print("Akun Berhasil Diupdate!")
+
+    def delete_akun_pembeli(self, idPembeli):
+        try:
+            session = sessionFactory()
+            session.query(akun_pembeliOrm).filter_by(id=idPembeli).delete()
+            session.commit()
+            session.close()
+        except Exception as e:
+            print(">>>", e)
+        else:
+            print("Akun Berhasil Dihapus!")   
 
     def lihat_akun_pembeli(self):
         try:
@@ -116,22 +152,33 @@ class Admin:
         else:
             print("Akun Berhasil Disimpan!")
 
-    def update_akun_penjual(idPenjual):
+    def update_akun_penjual(self, idPenjual):
         try:
             newnamaPenjual = input("Masukkan Nama: ")
             newuserPenjual = input("Masukkan Username: ")
             newpassPenjual = input("Masukkan Password: ")
             session = sessionFactory()
             session.query(akun_penjualOrm).filter_by(id=idPenjual).update({
-                akun_pembeliOrm.namaPenjual : newnamaPenjual,
-                akun_pembeliOrm.username: newuserPenjual, 
-                akun_pembeliOrm.password: newpassPenjual}, synchronize_session=False)
+                akun_penjualOrm.namaPenjual : newnamaPenjual,
+                akun_penjualOrm.username: newuserPenjual, 
+                akun_penjualOrm.password: newpassPenjual}, synchronize_session=False)
             session.commit()
             session.close()
         except Exception as e:
             print(">>>", e)
         else:
-            print("Akun Berhasil Diupdate!")   
+            print("Akun Berhasil Diupdate!")  
+
+    def delete_akun_penjual(self, idPenjual):
+        try:
+            session = sessionFactory()
+            session.query(akun_penjualOrm).filter_by(id=idPenjual).delete()
+            session.commit()
+            session.close()
+        except Exception as e:
+            print(">>>", e)
+        else:
+            print("Akun Berhasil Dihapus!") 
 
     def lihat_akun_penjual(self):
         try:
@@ -145,8 +192,11 @@ class Admin:
 
 """
 a = Admin("1", "andi")
-#a.tambah_saldo("marissa", 1000)
-a.lihat_saldo()
+a.tambah_akun_penjual("Andi","Maha","KKKK")
+a.lihat_akun_penjual()
+#a.delete_akun_pembeli(2)
+#a.tambah_saldo("Amin","Amin13",1000)
+#a.lihat_saldo()
     
 
 a = Admin()
