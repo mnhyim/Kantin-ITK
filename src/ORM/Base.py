@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
-engine = create_engine('sqlite:///kantin.db')
+engine = create_engine('sqlite:///src/db/kantin-itk.db')
 
 _SessionFactory = sessionmaker(bind=engine)
 
