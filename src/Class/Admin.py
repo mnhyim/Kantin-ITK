@@ -9,4 +9,4 @@ class Admin(Akun):
     def tambahAkunPenjual(self):
         pass
     def tambahSaldoPembeli(self, obj, x):
-        obj.setSaldo(x)
+        pass
