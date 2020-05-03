@@ -2,7 +2,7 @@ from src.Class.Akun import Akun
 from src.ORM.Base import sessionFactory
 from src.ORM.ormAkun import PembeliOrm
 
-class Pembeli(Akun):
+class Pembeli(Akun, PembeliOrm):
     def __init__(self, id, nama, JenisAkun, saldo):
         super().__init__(id, nama, JenisAkun)
         self.__saldo = saldo
