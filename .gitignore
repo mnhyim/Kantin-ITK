@@ -142,3 +142,5 @@ cython_debug/
 
 .idea
 
+# Database file
+src/ORM/kantin-itk.db

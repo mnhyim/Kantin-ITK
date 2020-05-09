@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Date, Integer
 from src.ORM.Base import Base, sessionFactory
 
-
 class KasOrm(Base):
     __tablename__ = 'Data Kas'
 
