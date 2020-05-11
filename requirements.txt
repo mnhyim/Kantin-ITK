@@ -1,0 +1,3 @@
+SQLAlchemy~=1.3.16
+PyQt5
+PyQt5-sip
