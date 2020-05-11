@@ -4,7 +4,7 @@ from src.ORM.ormAkun import PenjualOrm
 
 
 class Penjual(Akun, PenjualOrm):
-    def __init__(self, saldo, id, nama, email, password, jenisAkun):
+    def __init__(self, id, nama, email, password, jenisAkun, saldo):
         super().__init__(id, nama, email, password, jenisAkun)
         self.__saldo = saldo
 
