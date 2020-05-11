@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, Enum
 from src.Class.EnumClass import  JenisItem
-from src.ORM.Base import Base, sessionFactory
+from src.ORM.Base import Base, SessionFactory
 
 class Menu(Base):
     __tablename__ = 'Menu'
@@ -29,7 +29,7 @@ class MenuItemOrm(Base):
     # CRUD
     def insertMenuItem(self,):
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             menuItemOrm = MenuItemOrm(self.getNamaItem(),self.getJenisItem(), self.getMerekItem(), self.getHargaItem(), self.getKuantitasItem())
             session.add(menuItemOrm)
             session.commit()
@@ -42,7 +42,7 @@ class MenuItemOrm(Base):
     @staticmethod
     def readMenuItem():
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             for item in session.query(MenuItemOrm).all():
                 print("ID = {},Nama Item = {}, Jenis Item = {}, Merek Item = {}, Harga Item = {}, Kuantitas Item = {}"
                       .format(item.id, item.namaItem, item.jenisItem.name, item.merekItem, item.hargaItem, item.kuantitasItem))
@@ -58,7 +58,7 @@ class MenuItemOrm(Base):
             dhargaItem = input("Masukkan Harga Item Baru: ")
             dkuantitasItem = input("Masukkan Kuantitas Item Baru: ")
 
-            session = sessionFactory()
+            session = SessionFactory()
             session.query(MenuItemOrm).filter_by(id=x).update({
                 MenuItemOrm.namaItem: dNama,
                 MenuItemOrm.jenisItem: JenisItem(djenisItem),
@@ -76,7 +76,7 @@ class MenuItemOrm(Base):
     @staticmethod
     def deleteMenuItem(x):
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             session.query(MenuItemOrm).filter_by(id=x).delete()
             session.commit()
             session.close()

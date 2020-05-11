@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Date, Integer, String
-from src.ORM.Base import Base, sessionFactory
+from src.ORM.Base import Base, SessionFactory
 from datetime import datetime
 
 
@@ -19,7 +19,7 @@ class TransaksiOrm(Base):
     # CRUD
     def insertTransaksi(self):
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             trsOrm = TransaksiOrm(self.getTanggalTransaksi(), self.getJenisTransaksi(),self.getTotalTransaksi())
             session.add(trsOrm)
             session.commit()
@@ -32,7 +32,7 @@ class TransaksiOrm(Base):
     @staticmethod
     def readTransaksi():
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             for transaksi in session.query(TransaksiOrm).all():
                 print("ID = {}, Tanggal = {}, Jenis Transaksi = {}, Total Transaksi = {}".format(transaksi.id, transaksi.tanggalTransaksi, transaksi.jenisTransaksi, transaksi.totalTransaksi))
         except Exception as e:
@@ -42,7 +42,7 @@ class TransaksiOrm(Base):
     def updateTransaksi(x):
         try:
             dTotal = input("Masukkan Total Transaksi Baru: ")
-            session = sessionFactory()
+            session = SessionFactory()
             session.query(TransaksiOrm).filter_by(id=x).update({
                 TransaksiOrm.tanggalTransaksi: datetime.now().date(),
                 TransaksiOrm.totalTransaksi: dTotal
@@ -57,7 +57,7 @@ class TransaksiOrm(Base):
     @staticmethod
     def deleteTransaksi(x):
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             session.query(TransaksiOrm).filter_by(id=x).delete()
             session.commit()
             session.close()

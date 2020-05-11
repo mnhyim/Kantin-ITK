@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Date, Integer
-from src.ORM.Base import Base, sessionFactory
+from src.ORM.Base import Base, SessionFactory
 
 class KasOrm(Base):
     __tablename__ = 'Data Kas'
@@ -19,7 +19,7 @@ class KasOrm(Base):
     # CRUD
     def insertKas(self):
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             kasOrm = KasOrm(self.getTglKas(), self.getPemasukan(), self.getPengeluaran(), self.hitungLabaBersih())
             session.add(kasOrm)
             session.commit()
@@ -34,7 +34,7 @@ class KasOrm(Base):
         try:
             newPemasukan = input("Masukkan Jumlah Pemasukan: ")
             newPengeluaran = input("Masukkan Jumlah Pengeluaran: ")
-            session = sessionFactory()
+            session = SessionFactory()
             session.query(KasOrm).filter_by(id=id).update({
                 KasOrm.pemasukan: newPemasukan,
                 KasOrm.pengeluaran: newPengeluaran
@@ -49,7 +49,7 @@ class KasOrm(Base):
     @staticmethod
     def deleteKas(id):
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             session.query(KasOrm).filter_by(id=id).delete()
             session.commit()
             session.close()
@@ -61,7 +61,7 @@ class KasOrm(Base):
     @staticmethod
     def readKas():
         try:
-            session = sessionFactory()
+            session = SessionFactory()
             for item in session.query(KasOrm).all():
                 print("Id Kas = {}\nTanggal = {}\nPemasukan = {}\nPengeluaran = {}\nLaba Bersih = {}\n".format(item.id,                                                                                       item.labaBersih))
         except Exception as e:
