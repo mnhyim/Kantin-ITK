@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Date, Integer
 from src.ORM.Base import Base, SessionFactory
 
+
 class KasOrm(Base):
     __tablename__ = 'Data Kas'
 
@@ -63,6 +64,7 @@ class KasOrm(Base):
         try:
             session = SessionFactory()
             for item in session.query(KasOrm).all():
-                print("Id Kas = {}\nTanggal = {}\nPemasukan = {}\nPengeluaran = {}\nLaba Bersih = {}\n".format(item.id,                                                                                       item.labaBersih))
+                print("Id Kas = {}\nTanggal = {}\nPemasukan = {}\nPengeluaran = {}\nLaba Bersih = {}\n".format(item.id,
+                                                                                                               item.labaBersih))
         except Exception as e:
             print("-->", e)

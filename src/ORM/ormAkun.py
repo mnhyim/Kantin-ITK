@@ -2,18 +2,21 @@ from sqlalchemy import Column, String, Integer, Enum
 from src.Class.EnumClass import JenisAkun
 from src.ORM.Base import Base, SessionFactory
 
+
 class AdminOrm(Base):
     __tablename__ = 'Admin'
 
     id = Column(Integer, primary_key=True)
     nama = Column(String)
+    email = Column(String)
     jenisAkun = Column(Enum(JenisAkun))
 
-    def __init__(self,nama,jenisAkun):
+    def __init__(self, nama, email, jenisAkun):
         self.nama = nama
+        self.email = email
         self.jenisAkun = jenisAkun
 
-    #CRUD
+    # CRUD
     def insertAdmin(self):
         try:
             session = SessionFactory()
@@ -62,6 +65,7 @@ class AdminOrm(Base):
         else:
             print("Delete Berhasil")
 
+
 class PenjualOrm(Base):
     __tablename__ = 'Penjual'
     id = Column(Integer, primary_key=True)
@@ -69,16 +73,16 @@ class PenjualOrm(Base):
     jenisAkun = Column(Enum(JenisAkun))
     saldo = Column(Integer)
 
-    def __init__(self,nama,jenisAkun,saldo):
+    def __init__(self, nama, jenisAkun, saldo):
         self.nama = nama
         self.jenisAkun = jenisAkun
         self.saldo = saldo
 
-    #CRUD
+    # CRUD
     def insertPenjual(self):
         try:
             session = SessionFactory()
-            penjOrm = PenjualOrm(self.getNama(), self.getjenisAkun(),self.getSaldo())
+            penjOrm = PenjualOrm(self.getNama(), self.getjenisAkun(), self.getSaldo())
             session.add(penjOrm)
             session.commit()
             session.close()
@@ -92,7 +96,8 @@ class PenjualOrm(Base):
         try:
             session = SessionFactory()
             for penjual in session.query(PenjualOrm).all():
-                print("ID = {}, Nama = {}, Jenis Akun = {}, saldo = {}".format(penjual.id, penjual.nama, penjual.jenisAkun.name, penjual.saldo))
+                print("ID = {}, Nama = {}, Jenis Akun = {}, saldo = {}".format(penjual.id, penjual.nama,
+                                                                               penjual.jenisAkun.name, penjual.saldo))
         except Exception as e:
             print("Error -->", e)
 
@@ -125,6 +130,7 @@ class PenjualOrm(Base):
         else:
             print("Delete Berhasil")
 
+
 class PembeliOrm(Base):
     __tablename__ = 'Pembeli'
     id = Column(Integer, primary_key=True)
@@ -132,16 +138,16 @@ class PembeliOrm(Base):
     jenisAkun = Column(Enum(JenisAkun))
     saldo = Column(Integer)
 
-    def __init__(self,nama,jenisAkun,saldo):
+    def __init__(self, nama, jenisAkun, saldo):
         self.nama = nama
         self.jenisAkun = jenisAkun
         self.saldo = saldo
 
-    #CRUD
+    # CRUD
     def insertPembeli(self):
         try:
             session = SessionFactory()
-            pembOrm = PembeliOrm(self.getNama(), self.getjenisAkun(),self.getSaldo())
+            pembOrm = PembeliOrm(self.getNama(), self.getjenisAkun(), self.getSaldo())
             session.add(pembOrm)
             session.commit()
             session.close()
@@ -155,7 +161,8 @@ class PembeliOrm(Base):
         try:
             session = SessionFactory()
             for pembeli in session.query(PembeliOrm).all():
-                print("ID = {}, Nama = {}, Jenis Akun = {}, saldo = {}".format(pembeli.id, pembeli.nama, pembeli.jenisAkun.name, pembeli.saldo))
+                print("ID = {}, Nama = {}, Jenis Akun = {}, saldo = {}".format(pembeli.id, pembeli.nama,
+                                                                               pembeli.jenisAkun.name, pembeli.saldo))
         except Exception as e:
             print("Error -->", e)
 

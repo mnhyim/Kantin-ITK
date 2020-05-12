@@ -3,7 +3,7 @@ from src.ORM.ormMenu import MenuItemOrm
 
 
 class Menu:
-    def __init__(self, namaPenjual, menuItem):
+    def __init__(self, namaPenjual, menuItem=[]):
         self.__namaPenjual = namaPenjual
         self.__menuItem = menuItem
 

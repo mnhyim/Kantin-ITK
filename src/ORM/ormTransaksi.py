@@ -20,7 +20,7 @@ class TransaksiOrm(Base):
     def insertTransaksi(self):
         try:
             session = SessionFactory()
-            trsOrm = TransaksiOrm(self.getTanggalTransaksi(), self.getJenisTransaksi(),self.getTotalTransaksi())
+            trsOrm = TransaksiOrm(self.getTanggalTransaksi(), self.getJenisTransaksi(), self.getTotalTransaksi())
             session.add(trsOrm)
             session.commit()
             session.close()
@@ -34,7 +34,10 @@ class TransaksiOrm(Base):
         try:
             session = SessionFactory()
             for transaksi in session.query(TransaksiOrm).all():
-                print("ID = {}, Tanggal = {}, Jenis Transaksi = {}, Total Transaksi = {}".format(transaksi.id, transaksi.tanggalTransaksi, transaksi.jenisTransaksi, transaksi.totalTransaksi))
+                print("ID = {}, Tanggal = {}, Jenis Transaksi = {}, Total Transaksi = {}".format(transaksi.id,
+                                                                                                 transaksi.tanggalTransaksi,
+                                                                                                 transaksi.jenisTransaksi,
+                                                                                                 transaksi.totalTransaksi))
         except Exception as e:
             print("Error -->", e)
 
