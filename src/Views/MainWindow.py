@@ -15,6 +15,7 @@ class MainWindow(QMainWindow):
 
         # Jadi yang perlu diubah buat ganti screen cukup dua line dibawah aja
         widget = LoginViewLagi()
+        # widget = LoginView()
         self.setCentralWidget(widget)
 
 if __name__ == '__main__':
