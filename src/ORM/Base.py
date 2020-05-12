@@ -7,6 +7,7 @@ engine = create_engine('sqlite:///src/ORM/kantin-itk.db')
 
 _SessionFactory = sessionmaker(bind=engine)
 
-def sessionFactory():
+
+def SessionFactory():
     Base.metadata.create_all(engine)
     return _SessionFactory()
