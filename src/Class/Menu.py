@@ -17,23 +17,16 @@ class Menu:
         return self.__menuItem
 
     def setMenuItem(self, x):
-        self.__menuItem = x
+        self.__menuItem.append(x)
 
 
 class MenuItem:
-    def __init__(self, id, namaItem, jenisItem, merekItem, hargaItem, kuantitasItem):
-        self.__id = id
+    def __init__(self, namaItem, jenisItem, merekItem, hargaItem, kuantitasItem):
         self.__namaItem = namaItem
         self.__jenisItem = JenisItem(jenisItem)
         self.__merekItem = merekItem
         self.__hargaItem = hargaItem
         self.__kuantitasItem = kuantitasItem
-
-    def getId(self):
-        return self.__id
-
-    def setId(self, x):
-        self.__id = x
 
     def getNamaItem(self):
         return self.__namaItem
