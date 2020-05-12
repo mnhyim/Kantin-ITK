@@ -2,18 +2,11 @@ from src.Class.EnumClass import JenisAkun
 
 
 class Akun:
-    def __init__(self, id, nama, email, password, jenisAkun):
-        self.__id = id
+    def __init__(self, nama, email, password, jenisAkun):
         self.__nama = nama
         self.__email = email
         self.__password = password
         self.__jenisAkun = JenisAkun(jenisAkun)
-
-    def getId(self):
-        return self.__id
-
-    def setId(self, x):
-        self.__id = x
 
     def getNama(self):
         return self.__nama
