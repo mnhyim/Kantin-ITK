@@ -9,34 +9,19 @@ class LoginView(QWidget):
         super().__init__(*args, **kwargs)
         self.setWindowTitle("Login")
 
-        label = QLabel("Habib cupu")
-        label1 = QLabel("Label 1")
-        label2 = QLabel("Label 2")
-        label3 = QLabel("Label 3")
+        vLayoutKiri = QVBoxLayout()
+        vLayoutKiri.addWidget(Color('red'))
+        vLayoutKiri.addWidget(QLabel("kiri"))
+        vLayoutKiri.addWidget(QLabel("kiri"))
 
-        Vlayout = QVBoxLayout()
-        Vlayout.addWidget(label)
-        Vlayout.addWidget(label1)
-        Vlayout.addWidget(label2)
-        Vlayout.addWidget(label3)
+        vLayoutKanan = QVBoxLayout()
+        vLayoutKanan.addWidget(QLabel("Kanan"))
+        vLayoutKanan.addWidget(QLabel("Kanan"))
+        vLayoutKanan.addWidget(QLabel("Kanan"))
+        vLayoutKanan.addWidget(QLabel("Kanan"))
 
-        self.setLayout(Vlayout)
+        hLayout = QHBoxLayout()
+        hLayout.addLayout(vLayoutKiri)
+        hLayout.addLayout(vLayoutKanan)
 
-
-class LoginViewLagi(QWidget):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.setWindowTitle("Login")
-
-        label = QLabel("Gaplek cupu")
-        label1 = QLabel("Label 5")
-        label2 = QLabel("Label 6")
-        label3 = QLabel("Label 7")
-
-        Vlayout = QHBoxLayout()
-        Vlayout.addWidget(label)
-        Vlayout.addWidget(label1)
-        Vlayout.addWidget(label2)
-        Vlayout.addWidget(label3)
-
-        self.setLayout(Vlayout)
+        self.setLayout(hLayout)
