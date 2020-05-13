@@ -4,8 +4,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-# from MainWindow import *
-
 from Sidebar import Sidebar
 
 
@@ -13,8 +11,9 @@ class Login(QMainWindow):
     def __init__(self, *args, **kargs):
         super(Login, self).__init__(*args, **kargs)
 
-        self.leftSide()
-        self.rightSide()
+        layout = QHBoxLayout()
+        layout.addItem(self.leftSide())
+        layout.addItem(self.rightSide())
 
     def leftSide(self):
         self.stylesheet = """
@@ -128,12 +127,6 @@ class Login(QMainWindow):
         self.frame.setObjectName("frame")
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
-
         self.header = QLabel("Kantin ITK", self.frame)
         self.header.setObjectName("header")
         self.header.setGeometry(20, 0, 250, 120)
@@ -145,7 +138,6 @@ class Login(QMainWindow):
         self.ket.setFont(self.font.textSubtitle)
         self.ket.setWordWrap(True)
         self.ket.setAlignment(Qt.AlignJustify)
-        self.ket.setSizePolicy(sizePolicy)
 
     def mainPage(self):
         self.side = Sidebar()
