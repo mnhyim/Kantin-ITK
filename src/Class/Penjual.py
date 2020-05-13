@@ -7,7 +7,7 @@ class Penjual(Akun):
     def __init__(self, nama, email, password, jenisAkun, saldo, menu):
         super().__init__(nama, email, password, jenisAkun)
         self.__saldo = saldo
-        self.__menu = menu
+        self.__menu = [menu]
 
     def getSaldo(self):
         return self.__saldo
