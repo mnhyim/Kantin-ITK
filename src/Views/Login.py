@@ -7,6 +7,7 @@ from PyQt5.QtGui import *
 from Sidebar import Sidebar
 from src.Class.Autentikasi import Autentikasi
 from src.Views.Admin import Admin
+# from Admin import Admin
 
 class Login(QMainWindow):
     def __init__(self, *args, **kargs):
@@ -46,6 +47,20 @@ class Login(QMainWindow):
 
         QPushButton#btnLogin:focus{
             background-color: #ff9066;
+        }
+
+        QPushButton#btnSignUp{
+            background-color: transparent;
+            text-decoration: underline;
+            border: none;
+            border-radius: 4;
+            color: #ffb677;
+        }
+        QPushButton#btnSignUp::hover{
+            color: #ffa377;
+        }
+        QPushButton#btnSignUp::focus{
+            color: #ff9066;
         }
     
         """
@@ -104,6 +119,15 @@ class Login(QMainWindow):
         self.btnLogin.setFont(self.font.textLabel)
         self.btnLogin.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnLogin.clicked.connect(lambda: self.login(self.formEmail.text(), self.formPassword.text()))
+
+        self.btnSignUp = QPushButton("Sign Up", self.frame)
+        self.btnSignUp.setObjectName("btnSignUp")
+        self.btnSignUp.setGeometry(45,540, 100,20)
+        self.btnSignUp.resize(320, 45)
+        self.font.textLabel.setPointSize(11)
+        self.btnSignUp.setFont(self.font.textLabel)
+        self.btnSignUp.setCursor(QCursor(Qt.PointingHandCursor))
+        # self.btnSignUp.clicked.connect(lanjut)
 
     def rightSide(self):
         self.stylesheet = """
