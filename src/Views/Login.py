@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-from Sidebar import Sidebar
 from src.Class.Autentikasi import Autentikasi
 from src.Views.Admin import Admin
 # from Admin import Admin
