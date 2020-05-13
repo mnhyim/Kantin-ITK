@@ -7,6 +7,7 @@ class Akun:
         self.__email = email
         self.__password = password
         self.__jenisAkun = JenisAkun(jenisAkun)
+        self.__statusLogin = False
 
     def getNama(self):
         return self.__nama
@@ -27,7 +28,13 @@ class Akun:
         self.__password = x
 
     def getJenisAkun(self):
-        return self.__jenisAkun.name
+        return self.__jenisAkun
 
     def setjenisAkun(self, x):
         self.__jenisAkun = JenisAkun(x)
+
+    def getStatusLogin(self):
+        return self.__statusLogin
+
+    def setStatusLogin(self, x):
+        self.__statusLogin = x

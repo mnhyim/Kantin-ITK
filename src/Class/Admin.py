@@ -1,8 +1,9 @@
 from src.Class.Akun import Akun
 from src.ORM.ormAkun import AdminOrm
+from src.Class.Autentikasi import Autentikasi
 
 
-class Admin(Akun, AdminOrm):
+class Admin(Akun, AdminOrm, Autentikasi):
     def tambahAkunPembeli(self):
         pass
 

@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 from Sidebar import Sidebar
-
+from src.Class.Autentikasi import Autentikasi
 
 class Login(QMainWindow):
     def __init__(self, *args, **kargs):
@@ -79,22 +79,22 @@ class Login(QMainWindow):
         self.labelPassword.setGeometry(45, 390, 100, 20)
         self.labelPassword.setFont(self.font.textLabel)
 
-        self.email = QLineEdit(self.frame)
-        self.email.setGeometry(45, 330, 100, 20)
-        self.email.setStyleSheet("background-color: #fff")
-        self.email.resize(320, 40)
-        self.email.setPlaceholderText("Masukkan Email")
-        self.email.setFont(self.font.textSubtitle)
-        self.email.setTextMargins(12, 5, 12, 5)
+        self.formEmail = QLineEdit(self.frame)
+        self.formEmail.setGeometry(45, 330, 100, 20)
+        self.formEmail.setStyleSheet("background-color: #fff")
+        self.formEmail.resize(320, 40)
+        self.formEmail.setPlaceholderText("Masukkan Email")
+        self.formEmail.setFont(self.font.textSubtitle)
+        self.formEmail.setTextMargins(12, 5, 12, 5)
 
-        self.password = QLineEdit(self.frame)
-        self.password.setGeometry(45, 420, 100, 20)
-        self.password.setStyleSheet("background-color: #fff")
-        self.password.resize(320, 40)
-        self.password.setPlaceholderText("Masukkan Password")
-        self.password.setFont(self.font.textSubtitle)
-        self.password.setTextMargins(12, 5, 12, 5)
-        self.password.setEchoMode(QLineEdit.Password)
+        self.formPassword = QLineEdit(self.frame)
+        self.formPassword.setGeometry(45, 420, 100, 20)
+        self.formPassword.setStyleSheet("background-color: #fff")
+        self.formPassword.resize(320, 40)
+        self.formPassword.setPlaceholderText("Masukkan Password")
+        self.formPassword.setFont(self.font.textSubtitle)
+        self.formPassword.setTextMargins(12, 5, 12, 5)
+        self.formPassword.setEchoMode(QLineEdit.Password)
 
         self.btnLogin = QPushButton("Login", self.frame)
         self.btnLogin.setObjectName("btnLogin")
@@ -102,7 +102,7 @@ class Login(QMainWindow):
         self.btnLogin.resize(320, 45)
         self.btnLogin.setFont(self.font.textLabel)
         self.btnLogin.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnLogin.clicked.connect(self.mainPage)
+        self.btnLogin.clicked.connect(lambda: self.login(self.formEmail.text(),self.formPassword.text()))
 
     def rightSide(self):
         self.stylesheet = """
@@ -139,9 +139,12 @@ class Login(QMainWindow):
         self.ket.setWordWrap(True)
         self.ket.setAlignment(Qt.AlignJustify)
 
-    def mainPage(self):
-        self.side = Sidebar()
-        self.parent().setCentralWidget(self.side)
+    def login(self, email, password):
+        auth = Autentikasi(email,password)
+        auth.login()
+        if auth.getStatusLogin() == True:
+            self.side = Sidebar()
+            self.parent().setCentralWidget(self.side)
         # self.hide()
 
     def fontTemplate(self):
