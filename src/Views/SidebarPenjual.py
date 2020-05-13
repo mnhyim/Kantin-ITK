@@ -10,7 +10,7 @@ class Sidebar(QMainWindow):
         super(Sidebar, self).__init__(*args, **kargs)
 
         self.sidebarUI()
-        self.rightside()
+        # self.rightside()
 
     def sidebarUI(self):
         self.stylesheet = """
@@ -75,20 +75,20 @@ class Sidebar(QMainWindow):
         self.subtitle.setAlignment(Qt.AlignLeft)
         self.subtitle.setWordWrap(True)
 
-        self.btnMakanan = QPushButton("Tambah Menu", self.frame)
-        self.btnMakanan.setGeometry(0,200, 300, 80)
-        self.btnMakanan.setObjectName("tambah")
-        self.btnMakanan.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnTambahMenu = QPushButton("Tambah Menu", self.frame)
+        self.btnTambahMenu.setGeometry(0,200, 300, 80)
+        self.btnTambahMenu.setObjectName("tambah")
+        self.btnTambahMenu.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.btnMinuman = QPushButton("Edit Menu", self.frame)
-        self.btnMinuman.setGeometry(0, 280, 300, 80)
-        self.btnMinuman.setObjectName("edit")
-        self.btnMinuman.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnEditMenu = QPushButton("Edit Menu", self.frame)
+        self.btnEditMenu.setGeometry(0, 280, 300, 80)
+        self.btnEditMenu.setObjectName("edit")
+        self.btnEditMenu.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.btnTransaksi = QPushButton("Data Kas", self.frame)
-        self.btnTransaksi.setGeometry(0, 360, 300, 80)
-        self.btnTransaksi.setObjectName("kas")
-        self.btnTransaksi.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnDataKas = QPushButton("Data Kas", self.frame)
+        self.btnDataKas.setGeometry(0, 360, 300, 80)
+        self.btnDataKas.setObjectName("kas")
+        self.btnDataKas.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.btnLogout = QPushButton("Logout", self.frame)
         self.btnLogout.setGeometry(60,600, 180, 45)
@@ -96,26 +96,26 @@ class Sidebar(QMainWindow):
         self.btnLogout.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnLogout.clicked.connect(self.logout)
 
-    def rightside(self):
-        self.stylesheet = """
-        QWidget{
-            color: #333;
-            font-family: 'Open Sans';
-        }
-        QLabel{
-            font-family: 'Raleway';
-        }
-        """
-        self.centralWidget = QWidget(self)
-        self.centralWidget.move(420, 0)
-        self.centralWidget.setObjectName("rightside")
-        self.centralWidget.setStyleSheet(self.stylesheet)
-        self.centralWidget.setFixedSize(950, 720)
-
-        self.frame = QFrame(self.centralWidget)
-        self.frame.setFixedSize(950, 720)
-        self.frame.setObjectName("frame")
-        self.frame.setLayoutDirection(Qt.LeftToRight)
+    # def rightside(self):
+    #     self.stylesheet = """
+    #     QWidget{
+    #         color: #333;
+    #         font-family: 'Open Sans';
+    #     }
+    #     QLabel{
+    #         font-family: 'Raleway';
+    #     }
+    #     """
+    #     self.centralWidget = QWidget(self)
+    #     self.centralWidget.move(420, 0)
+    #     self.centralWidget.setObjectName("rightside")
+    #     self.centralWidget.setStyleSheet(self.stylesheet)
+    #     self.centralWidget.setFixedSize(950, 720)
+    #
+    #     self.frame = QFrame(self.centralWidget)
+    #     self.frame.setFixedSize(950, 720)
+    #     self.frame.setObjectName("frame")
+    #     self.frame.setLayoutDirection(Qt.LeftToRight)
 
     def logout(self):
         from login import Login
