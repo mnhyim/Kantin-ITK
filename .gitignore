@@ -144,3 +144,4 @@ cython_debug/
 
 # Database file
 src/ORM/kantin-itk.db
+src/Views/LoginLayout.py
