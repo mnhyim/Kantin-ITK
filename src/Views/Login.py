@@ -4,20 +4,16 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-class Login:
-    def __init__(self):
-        super().__init__()
-        self.app = QApplication([])
-        self.mainWindow = QMainWindow()
-        self.mainWindow.setWindowTitle("Login")
-        self.mainWindow.setGeometry(140,50,1100,650)
-        self.mainWindow.setStyleSheet("background-color: #edf7fa")
+# from MainWindow import *
+
+from Sidebar import Sidebar
+
+class Login(QMainWindow):
+    def __init__(self, *args, **kargs):
+        super(Login, self).__init__(*args, **kargs)
 
         self.leftSide()
         self.rightSide()
-
-        self.mainWindow.show()
-        sys.exit(self.app.exec_())
 
     def leftSide(self):
         self.stylesheet = """
@@ -29,9 +25,13 @@ class Login:
             background-color: #5f6caf;
         }
         QLineEdit{
-            border: none;
+            border: 2px solid transparent;
             border-radius: 4;
             color: #333;
+
+        }
+        QLineEdit::focus{
+            border: 2px solid rgba(255, 133, 102, .95);
         }
         QPushButton#btnLogin{
             background-color: #ffb677;
@@ -42,22 +42,21 @@ class Login:
         QPushButton#btnLogin::hover{
             background-color: #ffa377;
         }
+
+        QPushButton#btnLogin:focus{
+            background-color: #ff9066;
+        }
+    
         """
-        self.centralWidget = QWidget(self.mainWindow)
+        self.centralWidget = QWidget(self)
         self.centralWidget.setObjectName("leftWidget")
-        self.centralWidget.setFixedSize(420,650)
+        self.centralWidget.setFixedSize(420, 720)
         self.centralWidget.setStyleSheet(self.stylesheet)
 
-        self.verticalLay = QVBoxLayout(self.centralWidget)
-        self.verticalLay.setObjectName("verticalLayout")
-
         self.frame = QFrame(self.centralWidget)
-        self.frame.setFixedSize(420, 650)
+        self.frame.setFixedSize(420, 900)
         self.frame.setObjectName("frame")
         self.frame.setLayoutDirection(Qt.LeftToRight)
-
-        self.vertical = QVBoxLayout(self.frame)
-        self.vertical.setObjectName("vLayout")
 
         font = QFont()
         font.setPointSize(28)
@@ -91,7 +90,7 @@ class Login:
         self.email = QLineEdit(self.frame)
         self.email.setGeometry(45, 330, 100, 20)
         self.email.setStyleSheet("background-color: #fff")
-        self.email.resize(320, 38)
+        self.email.resize(320, 40)
         self.email.setPlaceholderText("Masukkan Email")
         self.email.setFont(font)
         self.email.setTextMargins(12, 5 , 12, 5)
@@ -113,6 +112,8 @@ class Login:
         self.btnLogin.resize(320,45)
         self.btnLogin.setFont(font)
         self.btnLogin.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnLogin.clicked.connect(self.mainPage)
+
 
     def rightSide(self):
         self.stylesheet = """
@@ -124,17 +125,22 @@ class Login:
             font-family: 'Raleway';
         }
         """
-        self.centralWidget = QWidget(self.mainWindow)
+        self.centralWidget = QWidget(self)
         self.centralWidget.setObjectName("rightWidget")
         self.centralWidget.move(420, 0)
         self.centralWidget.setStyleSheet(self.stylesheet)
-        # self.centralWidget.setStyleSheet("background-color:red")
-        self.centralWidget.setFixedSize(680, 650)
+        self.centralWidget.setFixedSize(950, 720)
 
         self.frame = QFrame(self.centralWidget)
-        self.frame.setFixedSize(680, 650)
+        self.frame.setFixedSize(950, 720)
         self.frame.setObjectName("frame")
         self.frame.setLayoutDirection(Qt.LeftToRight)
+
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
 
         font = QFont()
         font.setPointSize(28)
@@ -147,15 +153,29 @@ class Login:
 
         font.setPointSize(12)
         font.setWeight(40)
+
         self.ket = QLabel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolorum animi aliquam magnam, distinctio quas harum nostrum ea id sit sint laudantium officia quis quibusdam nobis expedita neque voluptatem culpa alias? Iure, quo iusto quia quis voluptatum consectetur adipisci numquam consequuntur. Quisquam, alias labore totam hic quae veniam distinctio, earum soluta nulla aliquid deserunt incidunt.", self.frame)
-        self.ket.setGeometry(20, 100, 630, 200)
+        self.ket.setGeometry(20, 100, 900, 200)
         self.ket.setFont(font)
         self.ket.setWordWrap(True)
         self.ket.setAlignment(Qt.AlignJustify)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ket.sizePolicy().hasHeightForWidth())
+        self.ket.setSizePolicy(sizePolicy)
 
         # self.gambar = QLabel(self.frame)
-        # self.gambar.setPixmap(QPixmap("assets/img/h.jpg"))
-        # self.gambar.move(0, 250)
-        # self.gambar.setFixedSize(700, 400)
-        
-Login()
+        # pixmap = QPixmap()
+        # pixmap.load('assets/img/bb.svg')
+        # self.pixmap_1 = pixmap.scaled(400, 600, Qt.KeepAspectRatio)
+        # self.gambar.setPixmap(self.pixmap_1)
+        # self.gambar.move(10, 250)
+
+
+    def mainPage(self):
+        self.side = Sidebar()
+        self.setCentralWidget(self.side)
+        self.side.show()
+        # self.hide()
+
