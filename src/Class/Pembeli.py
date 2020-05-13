@@ -3,9 +3,9 @@ from src.ORM.Base import SessionFactory
 from src.ORM.ormAkun import PembeliOrm
 
 
-class Pembeli(Akun, PembeliOrm):
-    def __init__(self, saldo, id, nama, email, password, jenisAkun):
-        super().__init__(id, nama, email, password, jenisAkun)
+class Pembeli(Akun):
+    def __init__(self, nama, email, password, jenisAkun, saldo):
+        super().__init__(nama, email, password, jenisAkun)
         self.__saldo = saldo
 
     def getSaldo(self):
