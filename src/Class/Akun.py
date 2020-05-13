@@ -26,7 +26,7 @@ class Akun:
     def setPassword(self, x):
         self.__password = x
 
-    def getjenisAkun(self):
+    def getJenisAkun(self):
         return self.__jenisAkun.name
 
     def setjenisAkun(self, x):

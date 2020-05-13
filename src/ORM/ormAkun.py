@@ -7,21 +7,22 @@ class AdminOrm(Base):
     __tablename__ = 'Admin'
 
     id = Column(Integer, primary_key=True)
-    nama = Column(String)
-    email = Column(String)
-    jenisAkun = Column(Enum(JenisAkun))
+    nama = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+    password = Column(String, nullable=False)
+    jenisAkun = Column(Enum(JenisAkun), nullable=False)
 
-    def __init__(self, nama, email, jenisAkun):
+    def __init__(self, nama, email, password, jenisAkun):
         self.nama = nama
         self.email = email
+        self.password = password
         self.jenisAkun = jenisAkun
 
     # CRUD
-    def insertAdmin(self):
+    def insert(self):
         try:
             session = SessionFactory()
-            admOrm = AdminOrm(self.getNama(), self.getjenisAkun())
-            session.add(admOrm)
+            session.add(AdminOrm(self.getNama(), self.getEmail(), self.getPassword(), self.getJenisAkun()))
             session.commit()
             session.close()
         except Exception as e:
@@ -30,16 +31,19 @@ class AdminOrm(Base):
             print("Insert Berhasil")
 
     @staticmethod
-    def readAdmin():
+    def read():
         try:
             session = SessionFactory()
             for admin in session.query(AdminOrm).all():
-                print("ID = {}, Nama = {}, Jenis Akun = {}".format(admin.id, admin.nama, admin.jenisAkun.name))
+                print("ID = {}, Nama = {}, Email = {}, Password = {}, Jenis Akun = {}".format(admin.id, admin.nama,
+                                                                                              admin.email,
+                                                                                              admin.password,
+                                                                                              admin.jenisAkun.name))
         except Exception as e:
             print("Error -->", e)
 
     @staticmethod
-    def updateAdmin(x):
+    def update(x):
         try:
             dNama = input("Masukkan Nama Baru: ")
             session = SessionFactory()
@@ -54,7 +58,7 @@ class AdminOrm(Base):
             print("Update Berhasil")
 
     @staticmethod
-    def deleteAdmin(x):
+    def delete(x):
         try:
             session = SessionFactory()
             session.query(AdminOrm).filter_by(id=x).delete()
@@ -69,21 +73,28 @@ class AdminOrm(Base):
 class PenjualOrm(Base):
     __tablename__ = 'Penjual'
     id = Column(Integer, primary_key=True)
-    nama = Column(String)
-    jenisAkun = Column(Enum(JenisAkun))
-    saldo = Column(Integer)
+    nama = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+    password = Column(String, nullable=False)
+    jenisAkun = Column(Enum(JenisAkun), nullable=False)
+    saldo = Column(Integer, nullable=False)
+    menu = Column(String)
 
-    def __init__(self, nama, jenisAkun, saldo):
+    def __init__(self, nama, email, password, jenisAkun, saldo, menu):
         self.nama = nama
+        self.email = email
+        self.password = password
         self.jenisAkun = jenisAkun
         self.saldo = saldo
+        self.menu = menu
 
     # CRUD
-    def insertPenjual(self):
+    def insert(self):
         try:
             session = SessionFactory()
-            penjOrm = PenjualOrm(self.getNama(), self.getjenisAkun(), self.getSaldo())
-            session.add(penjOrm)
+            session.add(
+                PenjualOrm(self.getNama(), self.getEmail(), self.getPassword(), self.getJenisAkun(), self.getSaldo(),
+                           self.getMenu()))
             session.commit()
             session.close()
         except Exception as e:
@@ -92,17 +103,23 @@ class PenjualOrm(Base):
             print("Insert Berhasil")
 
     @staticmethod
-    def readPenjual():
+    def read():
         try:
             session = SessionFactory()
             for penjual in session.query(PenjualOrm).all():
-                print("ID = {}, Nama = {}, Jenis Akun = {}, saldo = {}".format(penjual.id, penjual.nama,
-                                                                               penjual.jenisAkun.name, penjual.saldo))
+                print("ID = {}, Nama = {}, Email = {}, Password = {}, Jenis Akun = {}, saldo = {}, menu = {}".format(
+                    penjual.id,
+                    penjual.nama,
+                    penjual.email,
+                    penjual.password,
+                    penjual.jenisAkun,
+                    penjual.saldo,
+                    penjual.menu))
         except Exception as e:
             print("Error -->", e)
 
     @staticmethod
-    def updatePenjual(x):
+    def update(x):
         try:
             dNama = input("Masukkan Nama Baru: ")
             dSaldo = input("Masukkan Saldo Baru: ")
@@ -119,7 +136,7 @@ class PenjualOrm(Base):
             print("Update Berhasil")
 
     @staticmethod
-    def deletePenjual(x):
+    def delete(x):
         try:
             session = SessionFactory()
             session.query(PenjualOrm).filter_by(id=x).delete()
@@ -134,21 +151,25 @@ class PenjualOrm(Base):
 class PembeliOrm(Base):
     __tablename__ = 'Pembeli'
     id = Column(Integer, primary_key=True)
-    nama = Column(String)
-    jenisAkun = Column(Enum(JenisAkun))
-    saldo = Column(Integer)
+    nama = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+    password = Column(String, nullable=False)
+    jenisAkun = Column(Enum(JenisAkun), nullable=False)
+    saldo = Column(Integer, nullable=False)
 
-    def __init__(self, nama, jenisAkun, saldo):
+    def __init__(self, nama, email, password, jenisAkun, saldo):
         self.nama = nama
+        self.email = email
+        self.password = password
         self.jenisAkun = jenisAkun
         self.saldo = saldo
 
     # CRUD
-    def insertPembeli(self):
+    def insert(self):
         try:
             session = SessionFactory()
-            pembOrm = PembeliOrm(self.getNama(), self.getjenisAkun(), self.getSaldo())
-            session.add(pembOrm)
+            session.add(
+                PembeliOrm(self.getNama(), self.getEmail(), self.getPassword(), self.getJenisAkun(), self.getSaldo()))
             session.commit()
             session.close()
         except Exception as e:
@@ -157,17 +178,21 @@ class PembeliOrm(Base):
             print("Insert Berhasil")
 
     @staticmethod
-    def readPembeli():
+    def read():
         try:
             session = SessionFactory()
             for pembeli in session.query(PembeliOrm).all():
-                print("ID = {}, Nama = {}, Jenis Akun = {}, saldo = {}".format(pembeli.id, pembeli.nama,
-                                                                               pembeli.jenisAkun.name, pembeli.saldo))
+                print("ID = {}, Nama = {}, Email = {}, Password = {}, Jenis Akun = {}, saldo = {}".format(pembeli.id,
+                                                                                                          pembeli.nama,
+                                                                                                          pembeli.email,
+                                                                                                          pembeli.password,
+                                                                                                          pembeli.jenisAkun,
+                                                                                                          pembeli.saldo))
         except Exception as e:
             print("Error -->", e)
 
     @staticmethod
-    def updatePembeli(x):
+    def update(x):
         try:
             dNama = input("Masukkan Nama Baru: ")
             dSaldo = input("Masukkan Saldo Baru: ")
@@ -184,7 +209,7 @@ class PembeliOrm(Base):
             print("Update Berhasil")
 
     @staticmethod
-    def deletePembeli(x):
+    def delete(x):
         try:
             session = SessionFactory()
             session.query(PembeliOrm).filter_by(id=x).delete()

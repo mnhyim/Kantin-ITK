@@ -2,9 +2,12 @@ from src.Class.Admin import *
 from src.Class.Penjual import *
 from src.Class.Pembeli import *
 
-a = Admin(1,'a',1)
-b = Penjual(1,'b',2,5)
-c = Pembeli(1,'c',3,5)
-a.insertAdmin()
-b.insertPenjual()
-c.insertPembeli()
+# a = Pembeli("Joko Pur","jokpur@gmail.com","jokcool",3,50000)
+# a.insert()
+# a.read()
+# b = Penjual("Kekek","kekeke@gmail.com","kekek123",2,100000,"JEJE")
+# b.insert()
+# b.read()
+# c = Admin("ASEDE","asd.ded.com","asede123",1)
+# c.insert()
+# c.read()
