@@ -29,14 +29,14 @@ class TambahAkun(QWidget):
             border: none;
             color: #0a0807;
         }
-        QPushButton#tambahakun{
-            background-color: #0314ff;
+        QPushButton#simpan{
+            background-color: #c2c0bf;
             border: none;
             border-radius: 4;
             color: #0a0807;
         }
-        QPushButton#tambahakun::hover{
-            background-color: #0c1b7d;
+        QPushButton#simpan::hover{
+            background-color: #ada9a7;
         }
         
         """
@@ -79,11 +79,11 @@ class TambahAkun(QWidget):
         self.btnBack.setObjectName("back")
         self.btnBack.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.btnAddakun = QPushButton("Tambah Akun", self.centralWidget)
-        self.btnAddakun.setObjectName("tambahakun")
-        self.btnAddakun.setFixedSize(200, 40)
-        self.btnAddakun.setFont(font)
-        self.btnAddakun.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnSave = QPushButton("Simpan", self.centralWidget)
+        self.btnSave.setObjectName("simpan")
+        self.btnSave.setFixedSize(200, 40)
+        self.btnSave.setFont(font)
+        self.btnSave.setCursor(QCursor(Qt.PointingHandCursor))
 
         layoutHor1 = QHBoxLayout()
         layoutHor1.addWidget(self.labelName)
@@ -106,7 +106,7 @@ class TambahAkun(QWidget):
         layoutHor4.setSpacing(51)
 
         layoutHor = QHBoxLayout()
-        layoutHor.addWidget(self.btnAddakun, alignment=Qt.AlignCenter)
+        layoutHor.addWidget(self.btnSave, alignment=Qt.AlignCenter)
 
         layoutBack = QHBoxLayout()
         layoutBack.addWidget(self.btnBack, alignment=Qt.AlignLeft)
