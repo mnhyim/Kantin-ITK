@@ -7,6 +7,7 @@ from PyQt5.QtGui import *
 from Sidebar import Sidebar
 from src.Class.Autentikasi import Autentikasi
 
+
 class Login(QMainWindow):
     def __init__(self, *args, **kargs):
         super(Login, self).__init__(*args, **kargs)
@@ -102,7 +103,7 @@ class Login(QMainWindow):
         self.btnLogin.resize(320, 45)
         self.btnLogin.setFont(self.font.textLabel)
         self.btnLogin.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnLogin.clicked.connect(lambda: self.login(self.formEmail.text(),self.formPassword.text()))
+        self.btnLogin.clicked.connect(lambda: self.login(self.formEmail.text(), self.formPassword.text()))
 
     def rightSide(self):
         self.stylesheet = """
@@ -133,19 +134,25 @@ class Login(QMainWindow):
         self.header.setFont(self.font.textTitle)
 
         self.ket = QLabel(
-            "Institut Teknologi Kalimantan, Kokoh berdiri di katulistiwa, Simbol suci kemajuan teknologi, Tak tergantikan di Bumi Borneo, Mantap melangkah menggoreskan karya, Demi meraih cita, Mewujudkan kemandirian bangsa, Kuat dan berdikari",self.frame)
+            "Institut Teknologi Kalimantan, Kokoh berdiri di katulistiwa, Simbol suci kemajuan teknologi, Tak tergantikan di Bumi Borneo, Mantap melangkah menggoreskan karya, Demi meraih cita, Mewujudkan kemandirian bangsa, Kuat dan berdikari",
+            self.frame)
         self.ket.setGeometry(20, 100, 900, 200)
         self.ket.setFont(self.font.textSubtitle)
         self.ket.setWordWrap(True)
         self.ket.setAlignment(Qt.AlignJustify)
 
     def login(self, email, password):
-        auth = Autentikasi(email,password)
+        auth = Autentikasi(email, password)
         auth.login()
         if auth.getStatusLogin() == True:
             self.side = Sidebar()
             self.parent().setCentralWidget(self.side)
-        # self.hide()
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("Email atau Password Salah")
+            msg.setWindowTitle("Error")
+            msg.exec_()
 
     def fontTemplate(self):
         self.textTitle = QFont()
