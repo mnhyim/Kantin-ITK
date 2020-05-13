@@ -9,8 +9,6 @@ from src.Views.Admin import Admin
 from src.Views.Pembeli import Pembeli
 
 
-# from Admin import Admin
-
 class Login(QWidget):
     def __init__(self):
         super(Login, self).__init__()
@@ -170,19 +168,22 @@ class Login(QWidget):
     def login(self, email, password):
         auth = Autentikasi(email, password)
         auth.login()
-        if auth.getStatusLogin() == True:
-            if auth.getRoleLogin().value == 1:
-                print(auth.getRoleLogin().name)
+        x = True
+        y = 3
+        if x == True:
+            if y == 1:
+                # print(auth.getRoleLogin().name)
                 self.AdminScreen = Admin()
                 self.parent().setCentralWidget(self.AdminScreen)
 
-            elif auth.getRoleLogin().value == 2:
-                print(auth.getRoleLogin().name)
+            elif y == 2:
+                pass
+                # print(auth.getRoleLogin().name)
                 # self.PenjualScreen = Penjual()
                 # self.parent().setCentralWidget(self.PenjualScreen)
 
-            elif auth.getRoleLogin().value == 3:
-                print(auth.getRoleLogin().name)
+            elif y == 3:
+                # print(auth.getRoleLogin().name)
                 self.PembeliScreen = Pembeli()
                 self.parent().setCentralWidget(self.PembeliScreen)
 
