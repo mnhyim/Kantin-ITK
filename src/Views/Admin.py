@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-class Admin(QMainWindow):
+class Admin(QWidget):
     def __init__(self):
         super(Admin, self).__init__()
         

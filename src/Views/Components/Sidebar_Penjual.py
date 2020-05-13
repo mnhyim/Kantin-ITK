@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-class Sidebar(QMainWindow):
+class Sidebar(QWidget):
     def __init__(self, *args, **kargs):
         super(Sidebar, self).__init__(*args, **kargs)
 

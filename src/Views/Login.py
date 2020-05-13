@@ -8,7 +8,7 @@ from src.Class.Autentikasi import Autentikasi
 from src.Views.Admin import Admin
 # from Admin import Admin
 
-class Login(QMainWindow):
+class Login(QWidget):
     def __init__(self, *args, **kargs):
         super(Login, self).__init__(*args, **kargs)
 

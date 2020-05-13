@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-class SidebarAdmin(QMainWindow):
+class SidebarAdmin(QWidget):
     def __init__(self):
         super(SidebarAdmin, self).__init__()
 

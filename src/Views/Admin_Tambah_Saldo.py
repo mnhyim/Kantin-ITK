@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-class TambahSaldo(QMainWindow):
+class TambahSaldo(QWidget):
     def __init__(self):
         super(TambahSaldo, self).__init__()
 
