@@ -3,12 +3,7 @@ import sys
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel
-<<<<<<< HEAD
 from Login import Login
-=======
-from src.Views.LoginLayout import LoginView
-
->>>>>>> 6f66d494c002fedda4fcc37d7777508944ca7cc9
 
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kargs):
@@ -18,17 +13,10 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(1100, 650)
         self.setStyleSheet("background-color: #edf7fa")
         self.showMaximized()
-<<<<<<< HEAD
 
         # Jadi yang perlu diubah buat ganti screen cukup dua line dibawah aja
 
         widget = Login()
-=======
-        self.setStyleSheet("background-color: #eeeeee")
-
-        # Jadi yang perlu diubah buat ganti screen cukup dua line dibawah aja
-        widget = LoginView()
->>>>>>> 6f66d494c002fedda4fcc37d7777508944ca7cc9
         self.setCentralWidget(widget)
 
 
