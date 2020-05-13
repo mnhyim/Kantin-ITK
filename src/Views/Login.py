@@ -8,6 +8,7 @@ from PyQt5.QtGui import *
 
 from Sidebar import Sidebar
 
+
 class Login(QMainWindow):
     def __init__(self, *args, **kargs):
         super(Login, self).__init__(*args, **kargs)
@@ -48,6 +49,8 @@ class Login(QMainWindow):
         }
     
         """
+        self.font = self.fontTemplate()
+
         self.centralWidget = QWidget(self)
         self.centralWidget.setObjectName("leftWidget")
         self.centralWidget.setFixedSize(420, 720)
@@ -58,62 +61,49 @@ class Login(QMainWindow):
         self.frame.setObjectName("frame")
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
-        font = QFont()
-        font.setPointSize(28)
-        font.setWeight(75)
-
         self.teksLogin = QLabel("Login", self.frame)
-        self.teksLogin.setFont(font)
+        self.teksLogin.setFont(self.font.textTitle)
         self.teksLogin.setGeometry(150, 100, 100, 50)
 
-        font.setPointSize(12)
-        font.setWeight(60)
         self.ketLogin = QLabel("Silahkan Login dengan menggunakan Email ITK", self.frame)
         self.ketLogin.setGeometry(50, 160, 300, 50)
         self.ketLogin.setScaledContents(True)
-        self.ketLogin.setFont(font)
+        self.ketLogin.setFont(self.font.textSubtitle)
         self.ketLogin.setAlignment(Qt.AlignCenter)
         self.ketLogin.setWordWrap(True)
 
-        font.setPointSize(14)
-        font.setWeight(75)
         self.labelUser = QLabel("Email", self.frame)
         self.labelUser.setGeometry(45, 300, 100, 20)
-        self.labelUser.setFont(font)
+        self.labelUser.setFont(self.font.textLabel)
 
         self.labelPassword = QLabel("Password", self.frame)
         self.labelPassword.setGeometry(45, 390, 100, 20)
-        self.labelPassword.setFont(font)
+        self.labelPassword.setFont(self.font.textLabel)
 
-        font.setPointSize(12)
-        font.setWeight(20)
         self.email = QLineEdit(self.frame)
         self.email.setGeometry(45, 330, 100, 20)
         self.email.setStyleSheet("background-color: #fff")
         self.email.resize(320, 40)
         self.email.setPlaceholderText("Masukkan Email")
-        self.email.setFont(font)
-        self.email.setTextMargins(12, 5 , 12, 5)
+        self.email.setFont(self.font.textLabel)
+        self.email.setTextMargins(12, 5, 12, 5)
 
         self.password = QLineEdit(self.frame)
         self.password.setGeometry(45, 420, 100, 20)
         self.password.setStyleSheet("background-color: #fff")
-        self.password.resize(320,40)
+        self.password.resize(320, 40)
         self.password.setPlaceholderText("Masukkan Password")
-        self.password.setFont(font)
+        self.password.setFont(self.font.textLabel)
         self.password.setTextMargins(12, 5, 12, 5)
         self.password.setEchoMode(QLineEdit.Password)
 
-        font.setPointSize(12)
-        font.setWeight(75)
-        self.btnLogin = QPushButton("Login",self.frame)
+        self.btnLogin = QPushButton("Login", self.frame)
         self.btnLogin.setObjectName("btnLogin")
         self.btnLogin.setGeometry(45, 490, 100, 20)
-        self.btnLogin.resize(320,45)
-        self.btnLogin.setFont(font)
+        self.btnLogin.resize(320, 45)
+        self.btnLogin.setFont(self.font.textLabel)
         self.btnLogin.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnLogin.clicked.connect(self.mainPage)
-
 
     def rightSide(self):
         self.stylesheet = """
@@ -125,6 +115,8 @@ class Login(QMainWindow):
             font-family: 'Raleway';
         }
         """
+        self.font = self.fontTemplate()
+
         self.centralWidget = QWidget(self)
         self.centralWidget.setObjectName("rightWidget")
         self.centralWidget.move(420, 0)
@@ -142,36 +134,18 @@ class Login(QMainWindow):
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy)
 
-        font = QFont()
-        font.setPointSize(28)
-        font.setWeight(75)
-
         self.header = QLabel("Kantin ITK", self.frame)
         self.header.setObjectName("header")
         self.header.setGeometry(20, 0, 250, 120)
-        self.header.setFont(font)
+        self.header.setFont(self.font.textTitle)
 
-        font.setPointSize(12)
-        font.setWeight(40)
-
-        self.ket = QLabel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolorum animi aliquam magnam, distinctio quas harum nostrum ea id sit sint laudantium officia quis quibusdam nobis expedita neque voluptatem culpa alias? Iure, quo iusto quia quis voluptatum consectetur adipisci numquam consequuntur. Quisquam, alias labore totam hic quae veniam distinctio, earum soluta nulla aliquid deserunt incidunt.", self.frame)
+        self.ket = QLabel(
+            "Institut Teknologi Kalimantan, Kokoh berdiri di katulistiwa, Simbol suci kemajuan teknologi, Tak tergantikan di Bumi Borneo, Mantap melangkah menggoreskan karya, Demi meraih cita, Mewujudkan kemandirian bangsa, Kuat dan berdikari",self.frame)
         self.ket.setGeometry(20, 100, 900, 200)
-        self.ket.setFont(font)
+        self.ket.setFont(self.font.textSubtitle)
         self.ket.setWordWrap(True)
         self.ket.setAlignment(Qt.AlignJustify)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.ket.sizePolicy().hasHeightForWidth())
         self.ket.setSizePolicy(sizePolicy)
-
-        # self.gambar = QLabel(self.frame)
-        # pixmap = QPixmap()
-        # pixmap.load('assets/img/bb.svg')
-        # self.pixmap_1 = pixmap.scaled(400, 600, Qt.KeepAspectRatio)
-        # self.gambar.setPixmap(self.pixmap_1)
-        # self.gambar.move(10, 250)
-
 
     def mainPage(self):
         self.side = Sidebar()
@@ -179,3 +153,21 @@ class Login(QMainWindow):
         self.side.show()
         # self.hide()
 
+    def fontTemplate(self):
+        self.textTitle = QFont()
+        self.textTitle.setPointSize(24)
+        self.textTitle.setWeight(65)
+
+        self.textSubtitle = QFont()
+        self.textSubtitle.setPointSize(12)
+        self.textSubtitle.setWeight(50)
+
+        self.textLabel = QFont()
+        self.textLabel.setPointSize(12)
+        self.textLabel.setWeight(65)
+
+        self.textPlaceholder = QFont()
+        self.textPlaceholder.setPointSize(10)
+        self.textPlaceholder.setWeight(20)
+
+        return self
