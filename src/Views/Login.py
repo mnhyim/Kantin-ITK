@@ -6,7 +6,7 @@ from PyQt5.QtGui import *
 
 from Sidebar import Sidebar
 from src.Class.Autentikasi import Autentikasi
-
+from src.Views.Admin import Admin
 
 class Login(QMainWindow):
     def __init__(self, *args, **kargs):
@@ -147,8 +147,8 @@ class Login(QMainWindow):
         if auth.getStatusLogin() == True:
             if auth.getRoleLogin().value == 1:
                 print(auth.getRoleLogin().name)
-                # self.AdminScreen = Admin()
-                # self.parent().setCentralWidget(self.AdminScreen)
+                self.AdminScreen = Admin()
+                self.parent().setCentralWidget(self.AdminScreen)
 
             elif auth.getRoleLogin().value == 2:
                 print(auth.getRoleLogin().name)
