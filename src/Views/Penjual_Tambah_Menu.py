@@ -5,9 +5,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-class TambahSaldo(QMainWindow):
+class TambahMenu(QMainWindow):
     def __init__(self):
-        super(TambahSaldo, self).__init__()
+        super(TambahMenu, self).__init__()
 
         # self.sidebarUI()
         self.rightSide()
@@ -76,11 +76,11 @@ class TambahSaldo(QMainWindow):
         self.btnBack.setObjectName("back")
         self.btnBack.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.btnAddsaldo = QPushButton("Tambah Menu", self.centralWidget)
-        self.btnAddsaldo.setObjectName("tambahmenu")
-        self.btnAddsaldo.setFixedSize(200, 40)
-        self.btnAddsaldo.setFont(font)
-        self.btnAddsaldo.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnAddmenu = QPushButton("Tambah Menu", self.centralWidget)
+        self.btnAddmenu.setObjectName("tambahmenu")
+        self.btnAddmenu.setFixedSize(200, 40)
+        self.btnAddmenu.setFont(font)
+        self.btnAddmenu.setCursor(QCursor(Qt.PointingHandCursor))
 
         layoutHortitle = QHBoxLayout()
         layoutHortitle.addWidget(self.titlemenu)
@@ -94,7 +94,7 @@ class TambahSaldo(QMainWindow):
         layoutHor2.addWidget(self.ltambahmenu)
 
         layoutHor3 = QHBoxLayout()
-        layoutHor3.addWidget(self.btnAddsaldo, alignment=Qt.AlignCenter)
+        layoutHor3.addWidget(self.btnAddmenu, alignment=Qt.AlignCenter)
 
         layoutBack = QHBoxLayout()
         layoutBack.addWidget(self.btnBack, alignment=Qt.AlignLeft)
