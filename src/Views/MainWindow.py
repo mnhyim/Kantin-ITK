@@ -4,7 +4,7 @@ import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel
-from Login import Login
+from src.Views.Login import Login
 
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kargs):

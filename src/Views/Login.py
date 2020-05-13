@@ -6,11 +6,14 @@ from PyQt5.QtGui import *
 
 from src.Class.Autentikasi import Autentikasi
 from src.Views.Admin import Admin
+from src.Views.Pembeli import Pembeli
+
+
 # from Admin import Admin
 
 class Login(QWidget):
-    def __init__(self, *args, **kargs):
-        super(Login, self).__init__(*args, **kargs)
+    def __init__(self):
+        super(Login, self).__init__()
 
         layout = QHBoxLayout()
         layout.addItem(self.leftSide())
@@ -121,7 +124,7 @@ class Login(QWidget):
 
         self.btnSignUp = QPushButton("Sign Up", self.frame)
         self.btnSignUp.setObjectName("btnSignUp")
-        self.btnSignUp.setGeometry(45,540, 100,20)
+        self.btnSignUp.setGeometry(45, 540, 100, 20)
         self.btnSignUp.resize(320, 45)
         self.font.textLabel.setPointSize(11)
         self.btnSignUp.setFont(self.font.textLabel)
@@ -178,10 +181,10 @@ class Login(QWidget):
                 # self.PenjualScreen = Penjual()
                 # self.parent().setCentralWidget(self.PenjualScreen)
 
-            elif auth.getRoleLogin().value == 2:
+            elif auth.getRoleLogin().value == 3:
                 print(auth.getRoleLogin().name)
-                # self.PembeliScreen = Pembeli()
-                # self.parent().setCentralWidget(self.PembeliScreen)
+                self.PembeliScreen = Pembeli()
+                self.parent().setCentralWidget(self.PembeliScreen)
 
         else:
             msg = QMessageBox()
