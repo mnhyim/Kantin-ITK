@@ -141,8 +141,7 @@ class Login(QMainWindow):
 
     def mainPage(self):
         self.side = Sidebar()
-        self.setCentralWidget(self.side)
-        self.side.show()
+        self.parent().setCentralWidget(self.side)
         # self.hide()
 
     def fontTemplate(self):
