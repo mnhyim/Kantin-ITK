@@ -4,9 +4,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+
 class Sidebar(QMainWindow):
-    def __init__(self):
-        super(Sidebar, self).__init__()
+    def __init__(self, *args, **kargs):
+        super(Sidebar, self).__init__(*args, **kargs)
 
         self.sidebarUI()
 
@@ -24,7 +25,6 @@ class Sidebar(QMainWindow):
             background-color: #5f6caf;
             font-size: 16px;
             font-weight: 500;
-
         }
         QPushButton::hover, QPushButton::focus{
             color: #ffb677;
@@ -57,11 +57,11 @@ class Sidebar(QMainWindow):
         """
         self.centralWidget = QWidget(self)
         self.centralWidget.setObjectName("sidebar")
-        self.centralWidget.setFixedSize(420,650)
+        self.centralWidget.setFixedSize(420,720)
         self.centralWidget.setStyleSheet(self.stylesheet)
 
         self.frame = QFrame(self.centralWidget)
-        self.frame.setFixedSize(300, 650)
+        self.frame.setFixedSize(300, 720)
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
         self.title = QLabel("Kantin ITK", self.frame)
@@ -91,9 +91,12 @@ class Sidebar(QMainWindow):
         self.btnTransaksi.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.btnLogout = QPushButton("Logout", self.frame)
-        self.btnLogout.setGeometry(60,550, 180, 45)
+        self.btnLogout.setGeometry(60,600, 180, 45)
         self.btnLogout.setObjectName("logout")
         self.btnLogout.setCursor(QCursor(Qt.PointingHandCursor))
-
-
-# Sidebar()
+        self.btnLogout.clicked.connect(self.logout)
+    
+    def logout(self):
+        from Login import Login
+        self.back = Login()
+        self.parent().setCentralWidget(self.back)

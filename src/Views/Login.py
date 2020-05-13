@@ -84,7 +84,7 @@ class Login(QMainWindow):
         self.email.setStyleSheet("background-color: #fff")
         self.email.resize(320, 40)
         self.email.setPlaceholderText("Masukkan Email")
-        self.email.setFont(self.font.textLabel)
+        self.email.setFont(self.font.textSubtitle)
         self.email.setTextMargins(12, 5, 12, 5)
 
         self.password = QLineEdit(self.frame)
@@ -92,7 +92,7 @@ class Login(QMainWindow):
         self.password.setStyleSheet("background-color: #fff")
         self.password.resize(320, 40)
         self.password.setPlaceholderText("Masukkan Password")
-        self.password.setFont(self.font.textLabel)
+        self.password.setFont(self.font.textSubtitle)
         self.password.setTextMargins(12, 5, 12, 5)
         self.password.setEchoMode(QLineEdit.Password)
 
@@ -110,7 +110,7 @@ class Login(QMainWindow):
             color: #333;
             font-family: 'Open Sans';
         }
-        QLabel#header{
+        QLabel{
             font-family: 'Raleway';
         }
         """
