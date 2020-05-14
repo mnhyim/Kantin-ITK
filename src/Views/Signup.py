@@ -7,6 +7,7 @@ from PyQt5.QtGui import *
 from src.Class.EnumClass import JenisAkun
 from src.ORM.ormAkun import *
 
+
 class Signup(QWidget):
     def __init__(self):
         super(Signup, self).__init__()
@@ -79,7 +80,7 @@ class Signup(QWidget):
         self.ketLogin.setWordWrap(True)
 
         self.labelNama = QLabel("Nama", self.frame)
-        self.labelNama.setGeometry(45,210, 100, 20)
+        self.labelNama.setGeometry(45, 210, 100, 20)
         self.labelNama.setFont(self.font.textLabel)
 
         self.labelUser = QLabel("Email", self.frame)
@@ -120,7 +121,7 @@ class Signup(QWidget):
         self.formPassword.setEchoMode(QLineEdit.Password)
 
         self.formJenisAkun = QComboBox(self.frame)
-        self.formJenisAkun.setGeometry(45,510, 100, 20)
+        self.formJenisAkun.setGeometry(45, 510, 100, 20)
         self.formJenisAkun.setObjectName("jenisAkun")
         self.formJenisAkun.resize(320, 40)
         for i in JenisAkun:
@@ -144,15 +145,47 @@ class Signup(QWidget):
 
         if jenisAkun == "Admin":
             print("masuk ke 1")
-            AdminOrm(nama,email,password,jenisAkun).insert()
+            try:
+                AdminOrm(nama, email, password, jenisAkun).insert()
+                msg = QMessageBox()
+                msg.setWindowTitle("Success")
+                msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
+                msg.exec_()
+            except Exception as e:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Warning)
+                msg.setText(e)
+                msg.setWindowTitle("Error")
+                msg.exec_()
+
         elif jenisAkun == "Penjual":
             print("masuk ke 2")
-            PenjualOrm(nama,email,password,jenisAkun,0).insert()
+            try:
+                PenjualOrm(nama, email, password, jenisAkun, 0).insert()
+                msg = QMessageBox()
+                msg.setWindowTitle("Success")
+                msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
+                msg.exec_()
+            except Exception as e:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Warning)
+                msg.setText(e)
+                msg.setWindowTitle("Error")
+                msg.exec_()
         elif jenisAkun == "Pembeli":
             print("masuk ke 3")
-            PembeliOrm(nama,email,password,jenisAkun,0).insert()
-
-
+            try:
+                PembeliOrm(nama, email, password, jenisAkun, 0).insert()
+                msg = QMessageBox()
+                msg.setWindowTitle("Success")
+                msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
+                msg.exec_()
+            except Exception as e:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Warning)
+                msg.setText(e)
+                msg.setWindowTitle("Error")
+                msg.exec_()
 
     def fontTemplate(self):
         self.textTitle = QFont()
