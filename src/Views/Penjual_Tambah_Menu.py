@@ -55,8 +55,7 @@ class TambahMenu(QMainWindow):
         self.titlemenu = QLabel("Tambah Menu", self.centralWidget)
         self.titlemenu.setFont(font)
 
-
-        font.setPointSize(20)
+    #nama
         self.namamenu = QLabel("Nama Menu :", self.centralWidget)
         self.namamenu.setFont(font)
 
@@ -64,7 +63,23 @@ class TambahMenu(QMainWindow):
         self.lmenu.setText("")
         self.lmenu.setFont(font)
 
-        font.setPointSize(20)
+    #type
+        self.edit = QLabel("Type Menu   :", self.centralWidget)
+        self.edit.setFont(font)
+
+        self.chooseBuyer = QComboBox(self.centralWidget)
+        self.chooseBuyer.addItems(['Titipan','Biasa'])
+        self.chooseBuyer.setFixedHeight(35)
+        self.chooseBuyer.setFont(font)
+    #merk
+        self.merkmenu = QLabel("Merk Menu   :", self.centralWidget)
+        self.merkmenu.setFont(font)
+
+        self.lmerk = QLineEdit(self.centralWidget)
+        self.lmerk.setText("")
+        self.lmerk.setFont(font)
+
+    #harga
         self.harga = QLabel("Harga Menu :", self.centralWidget)
         self.harga.setFont(font)
 
@@ -72,10 +87,19 @@ class TambahMenu(QMainWindow):
         self.ltambahmenu.setText("")
         self.ltambahmenu.setFont(font)
 
+    #kuantitas
+        self.kuantitas = QLabel("Kuantitas     :", self.centralWidget)
+        self.kuantitas.setFont(font)
+
+        self.lkuantitas = QLineEdit(self.centralWidget)
+        self.lkuantitas.setText("")
+        self.lkuantitas.setFont(font)
+
+    #btnkembali
         self.btnBack = QPushButton("Kembali", self.centralWidget)
         self.btnBack.setObjectName("back")
         self.btnBack.setCursor(QCursor(Qt.PointingHandCursor))
-
+    #btntambah
         self.btnAddmenu = QPushButton("Tambah Menu", self.centralWidget)
         self.btnAddmenu.setObjectName("tambahmenu")
         self.btnAddmenu.setFixedSize(200, 40)
@@ -85,13 +109,25 @@ class TambahMenu(QMainWindow):
         layoutHortitle = QHBoxLayout()
         layoutHortitle.addWidget(self.titlemenu)
 
-        layoutHor1 = QHBoxLayout()
-        layoutHor1.addWidget(self.namamenu)
-        layoutHor1.addWidget(self.lmenu)
+        layoutHornama = QHBoxLayout()
+        layoutHornama.addWidget(self.namamenu)
+        layoutHornama.addWidget(self.lmenu)
 
-        layoutHor2 = QHBoxLayout()
-        layoutHor2.addWidget(self.harga)
-        layoutHor2.addWidget(self.ltambahmenu)
+        layoutHortipe = QHBoxLayout()
+        layoutHortipe.addWidget(self.edit)
+        layoutHortipe.addWidget(self.chooseBuyer)
+
+        layoutHorharga = QHBoxLayout()
+        layoutHorharga.addWidget(self.harga)
+        layoutHorharga.addWidget(self.ltambahmenu)
+
+        layoutHormerk = QHBoxLayout()
+        layoutHormerk.addWidget(self.merkmenu)
+        layoutHormerk.addWidget(self.lmerk)
+
+        layoutHorkuantitas = QHBoxLayout()
+        layoutHorkuantitas.addWidget(self.kuantitas)
+        layoutHorkuantitas.addWidget(self.lkuantitas)
 
         layoutHor3 = QHBoxLayout()
         layoutHor3.addWidget(self.btnAddmenu, alignment=Qt.AlignCenter)
@@ -103,8 +139,11 @@ class TambahMenu(QMainWindow):
         vertical.addLayout(layoutBack)
         vertical.addStretch()
         vertical.addLayout(layoutHortitle)
-        vertical.addLayout(layoutHor1)
-        vertical.addLayout(layoutHor2)
+        vertical.addLayout(layoutHornama)
+        vertical.addLayout(layoutHortipe)
+        vertical.addLayout(layoutHormerk)
+        vertical.addLayout(layoutHorharga)
+        vertical.addLayout(layoutHorkuantitas)
         for i in range(20):
             vertical.addStretch()
         vertical.addLayout(layoutHor3)
