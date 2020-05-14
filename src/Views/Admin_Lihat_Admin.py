@@ -4,9 +4,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-class Admin(QWidget):
+class LihatAdmin(QWidget):
     def __init__(self):
-        super(Admin, self).__init__()
+        super(LihatAdmin, self).__init__()
         
        # self.sidebarUI()
         self.rightSide()

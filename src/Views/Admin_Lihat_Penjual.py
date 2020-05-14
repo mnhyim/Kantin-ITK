@@ -5,9 +5,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-class TambahSaldo(QWidget):
+class LihatPenjual(QWidget):
     def __init__(self):
-        super(TambahSaldo, self).__init__()
+        super(LihatPenjual, self).__init__()
 
         # self.sidebarUI()
         self.rightSide()

@@ -6,7 +6,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 from src.Class.Autentikasi import Autentikasi
-from src.Views.Admin_Lihat_Admin import Admin
+from src.Views.Admin import Admin
 from src.Views.Pembeli import Pembeli
 from src.Views.Signup import Signup
 from src.Views.Penjual_Tambah_Menu import TambahMenu
