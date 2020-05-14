@@ -2,12 +2,17 @@ from enum import Enum
 
 
 # ENUM
+
+
 class JenisAkun(Enum):
-    ADMIN = 1
-    PENJUAL = 2
-    PEMBELI = 3
+    Admin = 1
+    Penjual = 2
+    Pembeli = 3
 
 
 class JenisItem(Enum):
     BIASA = 1
     TITIPAN = 2
+
+for i in JenisAkun:
+    print(i)

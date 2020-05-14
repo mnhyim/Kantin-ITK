@@ -22,7 +22,7 @@ class AdminOrm(Base):
     def insert(self):
         try:
             session = SessionFactory()
-            session.add(AdminOrm(self.getNama(), self.getEmail(), self.getPassword(), self.getJenisAkun()))
+            session.add(AdminOrm(self.nama, self.email, self.password, self.jenisAkun))
             session.commit()
             session.close()
         except Exception as e:
@@ -80,7 +80,7 @@ class PenjualOrm(Base):
     saldo = Column(Integer, nullable=False)
     menu = Column(String)
 
-    def __init__(self, nama, email, password, jenisAkun, saldo, menu):
+    def __init__(self, nama, email, password, jenisAkun, saldo, menu = ""):
         self.nama = nama
         self.email = email
         self.password = password
@@ -93,8 +93,8 @@ class PenjualOrm(Base):
         try:
             session = SessionFactory()
             session.add(
-                PenjualOrm(self.getNama(), self.getEmail(), self.getPassword(), self.getJenisAkun(), self.getSaldo(),
-                           self.getMenu()))
+                PenjualOrm(self.nama, self.email, self.password, self.jenisAkun, self.saldo,
+                           self.menu))
             session.commit()
             session.close()
         except Exception as e:
@@ -169,7 +169,7 @@ class PembeliOrm(Base):
         try:
             session = SessionFactory()
             session.add(
-                PembeliOrm(self.getNama(), self.getEmail(), self.getPassword(), self.getJenisAkun(), self.getSaldo()))
+                PembeliOrm(self.nama, self.email, self.password, self.jenisAkun, self.saldo))
             session.commit()
             session.close()
         except Exception as e:

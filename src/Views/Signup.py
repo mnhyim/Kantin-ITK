@@ -4,6 +4,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+from src.Class.EnumClass import JenisAkun
+from src.ORM.ormAkun import *
+
 class Signup(QWidget):
     def __init__(self):
         super(Signup, self).__init__()
@@ -120,9 +123,8 @@ class Signup(QWidget):
         self.formJenisAkun.setGeometry(45,510, 100, 20)
         self.formJenisAkun.setObjectName("jenisAkun")
         self.formJenisAkun.resize(320, 40)
-        self.formJenisAkun.addItem("Admin")
-        self.formJenisAkun.addItem("Pembeli")
-        self.formJenisAkun.addItem("Penjual")
+        for i in JenisAkun:
+            self.formJenisAkun.addItem(i.name)
         self.formJenisAkun.setFont(self.font.textSubtitle)
 
         self.btnSignUp = QPushButton("Sign Up", self.frame)
@@ -132,7 +134,25 @@ class Signup(QWidget):
         self.font.textLabel.setPointSize(11)
         self.btnSignUp.setFont(self.font.textLabel)
         self.btnSignUp.setCursor(QCursor(Qt.PointingHandCursor))
-        # self.btnSignUp.clicked.connect(lanjut)
+        self.btnSignUp.clicked.connect(lambda: self.signupUser())
+
+    def signupUser(self):
+        nama = self.formNama.text()
+        email = self.formEmail.text()
+        password = self.formPassword.text()
+        jenisAkun = self.formJenisAkun.currentText()
+
+        if jenisAkun == "Admin":
+            print("masuk ke 1")
+            AdminOrm(nama,email,password,jenisAkun).insert()
+        elif jenisAkun == "Penjual":
+            print("masuk ke 2")
+            PenjualOrm(nama,email,password,jenisAkun,0).insert()
+        elif jenisAkun == "Pembeli":
+            print("masuk ke 3")
+            PembeliOrm(nama,email,password,jenisAkun,0).insert()
+
+
 
     def fontTemplate(self):
         self.textTitle = QFont()

@@ -7,6 +7,7 @@ from PyQt5.QtGui import *
 from src.Class.Autentikasi import Autentikasi
 from src.Views.Admin import Admin
 from src.Views.Pembeli import Pembeli
+from src.Views.Signup import Signup
 
 
 class Login(QWidget):
@@ -127,7 +128,7 @@ class Login(QWidget):
         self.font.textLabel.setPointSize(11)
         self.btnSignUp.setFont(self.font.textLabel)
         self.btnSignUp.setCursor(QCursor(Qt.PointingHandCursor))
-        # self.btnSignUp.clicked.connect(lanjut)
+        self.btnSignUp.clicked.connect(lambda: self.signUp())
 
     def rightSide(self):
         self.stylesheet = """
@@ -193,6 +194,10 @@ class Login(QWidget):
             msg.setText("Email atau Password Salah")
             msg.setWindowTitle("Error")
             msg.exec_()
+
+    def signUp(self):
+        signUpScreen = Signup()
+        self.parent().setCentralWidget(signUpScreen)
 
     def fontTemplate(self):
         self.textTitle = QFont()
