@@ -1,5 +1,6 @@
 import sys
 
+from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -7,6 +8,7 @@ from PyQt5.QtGui import *
 from src.Class.Autentikasi import Autentikasi
 from src.Views.Admin import Admin
 from src.Views.Pembeli import Pembeli
+from src.Views.Signup import Signup
 
 
 class Login(QWidget):
@@ -23,14 +25,17 @@ class Login(QWidget):
             color: #fff;
             font-family: 'Open Sans';
         }
-        QFrame{
+        QFrame#frameBg{
             background-color: #5f6caf;
+        }
+        QLabel{
+            background-color: rgba(0,0,0,0);
+            color: #eee;
         }
         QLineEdit{
             border: 2px solid transparent;
             border-radius: 4;
             color: #333;
-
         }
         QLineEdit::focus{
             border: 2px solid rgba(255, 133, 102, .95);
@@ -73,7 +78,7 @@ class Login(QWidget):
 
         self.frame = QFrame(self.centralWidget)
         self.frame.setFixedSize(420, 900)
-        self.frame.setObjectName("frame")
+        self.frame.setObjectName("frameBg")
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
         self.teksLogin = QLabel("Login", self.frame)
@@ -127,13 +132,14 @@ class Login(QWidget):
         self.font.textLabel.setPointSize(11)
         self.btnSignUp.setFont(self.font.textLabel)
         self.btnSignUp.setCursor(QCursor(Qt.PointingHandCursor))
-        # self.btnSignUp.clicked.connect(lanjut)
+        self.btnSignUp.clicked.connect(lambda: self.signUp())
 
     def rightSide(self):
         self.stylesheet = """
         QWidget{
             color: #333;
             font-family: 'Open Sans';
+            background-color: rgba(0,0,0,0)
         }
         QLabel{
             font-family: 'Raleway';
@@ -165,6 +171,12 @@ class Login(QWidget):
         self.ket.setWordWrap(True)
         self.ket.setAlignment(Qt.AlignJustify)
 
+        self.lb = QLabel(self.frame)
+        self.pixmap = QtGui.QPixmap("../Assets/login_illustration.png")
+        self.lb.resize(self.width(), self.height())
+        self.lb.setPixmap(self.pixmap.scaled(self.lb.size(), QtCore.Qt.KeepAspectRatio))
+        self.lb.setGeometry(250, 250, self.width(), self.height())
+
     def login(self, email, password):
         auth = Autentikasi(email, password)
         auth.login()
@@ -193,6 +205,10 @@ class Login(QWidget):
             msg.setText("Email atau Password Salah")
             msg.setWindowTitle("Error")
             msg.exec_()
+
+    def signUp(self):
+        signUpScreen = Signup()
+        self.parent().setCentralWidget(signUpScreen)
 
     def fontTemplate(self):
         self.textTitle = QFont()
