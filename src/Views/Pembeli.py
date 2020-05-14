@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
-from Pembeli_Minuman import PembeliMinuman
+# from Pembeli_Minuman import PembeliMinuman
 
 class Pembeli(QMainWindow):
     def __init__(self):

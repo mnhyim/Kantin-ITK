@@ -180,22 +180,20 @@ class Login(QWidget):
     def login(self, email, password):
         auth = Autentikasi(email, password)
         auth.login()
-        x = True
-        y = 3
-        if x == True:
-            if y == 1:
-                # print(auth.getRoleLogin().name)
+        if auth.getStatusLogin() == True:
+            if auth.getRoleLogin().value == 1:
+                print(auth.getRoleLogin().name)
                 self.AdminScreen = Admin()
                 self.parent().setCentralWidget(self.AdminScreen)
 
-            elif y == 2:
+            elif auth.getRoleLogin().value == 2:
                 pass
                 # print(auth.getRoleLogin().name)
                 # self.PenjualScreen = Penjual()
                 # self.parent().setCentralWidget(self.PenjualScreen)
 
-            elif y == 3:
-                # print(auth.getRoleLogin().name)
+            elif auth.getRoleLogin().value == 3:
+                print(auth.getRoleLogin().name)
                 self.PembeliScreen = Pembeli()
                 self.parent().setCentralWidget(self.PembeliScreen)
 

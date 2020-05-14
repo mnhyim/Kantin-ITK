@@ -5,7 +5,7 @@ from src.ORM.ormAkun import *
 class Autentikasi:
     def __init__(self, emailLogin=0, passwordLogin=0):
         self.__statusLogin = False
-        self.__roleLogin = 0
+        self.__roleLogin = ""
         self.__emailLogin = emailLogin
         self.__passwordLogin = passwordLogin
 
@@ -26,7 +26,6 @@ class Autentikasi:
         query1 = session.query(AdminOrm).filter_by(email=self.__emailLogin).first()
         query2 = session.query(PenjualOrm).filter_by(email=self.__emailLogin).first()
         query3 = session.query(PembeliOrm).filter_by(email=self.__emailLogin).first()
-
         if query1 != None:
             if query1.email == self.__emailLogin and query1.password == self.__passwordLogin:
                 self.__statusLogin = True

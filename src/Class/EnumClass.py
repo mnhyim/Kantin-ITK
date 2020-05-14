@@ -13,6 +13,3 @@ class JenisAkun(Enum):
 class JenisItem(Enum):
     BIASA = 1
     TITIPAN = 2
-
-for i in JenisAkun:
-    print(i)
