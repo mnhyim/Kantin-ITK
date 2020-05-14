@@ -8,10 +8,7 @@ from PyQt5.QtGui import *
 class LihatPembeli(QWidget):
     def __init__(self):
         super(LihatPembeli, self).__init__()
-
-        # self.sidebarUI()
         self.rightSide()
-        # self.createHorizontalLayout()
 
     def rightSide(self):
         self.stylesheet = """
@@ -70,20 +67,22 @@ class LihatPembeli(QWidget):
 
         font = QFont("Arial")
         font.setPointSize(20)
-        
+
         self.labelTitle = QLabel("Pembeli", self.centralWidget)
         self.labelTitle.setObjectName("title")
         self.labelTitle.setAlignment(Qt.AlignCenter)
         self.labelTitle.setFont(font)
 
         self.group = QGroupBox()
-        vertikal = QVBoxLayout()    
+        vertikal = QVBoxLayout()
         self.radiobtn = QButtonGroup()
-        self.list = ["Andi","gaple","habib","Hacim","Andi","gaple","habib","Hacim","Andi","gaple","habib","Hacim","Andi","gaple","habib","Hacim","Andi","gaple","habib","Hacim"]
+        self.list = ["Andi", "gaple", "habib", "Hacim", "Andi", "gaple", "habib", "Hacim", "Andi", "gaple", "habib",
+                     "Hacim", "Andi", "gaple", "habib", "Hacim", "Andi", "gaple", "habib", "Hacim"]
         for i in (self.list):
             font.setPointSize(15)
             self.labelNama = QRadioButton(i)
-            self.labelNama.setStyleSheet('QRadioButton{font: 15pt Helvetica MS;} QRadioButton::indicator { width: 30px; height: 30px;};')
+            self.labelNama.setStyleSheet(
+                'QRadioButton{font: 15pt Helvetica MS;} QRadioButton::indicator { width: 30px; height: 30px;};')
             self.radiobtn.addButton(self.labelNama)
             vertikal.addWidget(self.labelNama)
 
@@ -91,7 +90,7 @@ class LihatPembeli(QWidget):
         scroll = QScrollArea()
         scroll.setWidget(self.group)
         scroll.setWidgetResizable(True)
-        #scroll.setHorizontalScrollBarPolicy(Qt::scr)
+        # scroll.setHorizontalScrollBarPolicy(Qt::scr)
 
         self.btnBack = QPushButton("Kembali", self.centralWidget)
         self.btnBack.setObjectName("back")
@@ -120,7 +119,6 @@ class LihatPembeli(QWidget):
 
         layoutHor1 = QHBoxLayout()
         layoutHor1.addWidget(self.labelTitle)
-        
 
         layoutHor2 = QHBoxLayout()
         layoutHor2.addWidget(self.btnAddacc)
@@ -141,7 +139,7 @@ class LihatPembeli(QWidget):
 
         self.centralWidget.setLayout(vertical)
 
-    #test penggunaan button
+    # test penggunaan button
     def btn(self):
         self.checked = self.radiobtn.checkedButton().text()
         self.msg = QMessageBox(self.centralWidget)

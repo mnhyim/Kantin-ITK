@@ -3,10 +3,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
-from src.Views.Admin_Edit_Akun import TambahAkun
-from src.Views.Admin_Lihat_Admin import LihatAdmin
-from src.Views.Admin_Lihat_Pembeli import LihatPembeli
-from src.Views.Admin_Lihat_Penjual import LihatPenjual
+from src.Views.Admin_LihatAdmin import LihatAdmin
+from src.Views.Admin_LihatPembeli import LihatPembeli
+from src.Views.Admin_LihatPenjual import LihatPenjual
 
 
 class Admin(QMainWindow):
@@ -15,17 +14,19 @@ class Admin(QMainWindow):
 
         self.font = self.fontTemplate()
 
-        self.tab1 = self.editAkun()
-        self.tab2 = self.minumanUi()
-        self.tab3 = self.transaksiUi()
+        self.tab1 = LihatPenjual()
+        self.tab2 = LihatPembeli()
 
         main_layout = QHBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
+
         main_layout.addWidget(self.leftSide())
         main_layout.addWidget(self.rightSide())
+
         main_layout.setStretch(0, 70)
         main_layout.setStretch(1, 200)
+
         main_widget = QWidget()
         main_widget.setLayout(main_layout)
         self.setCentralWidget(main_widget)
@@ -84,48 +85,34 @@ class Admin(QMainWindow):
         """
 
         # Buttons
-        self.btnMakanan = QPushButton('Makanan', self)
-        self.btnMakanan.setFont(self.font.textLabel)
-        self.btnMakanan.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnMakanan.clicked.connect(self.button1)
+        self.btnManajemenAkun = QPushButton('Manajemen Akun', self)
+        self.btnManajemenAkun.setFont(self.font.textLabel)
+        self.btnManajemenAkun.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnManajemenAkun.clicked.connect(lambda: self.right_widget.setCurrentIndex(0))
 
-        self.btnMinuman = QPushButton('Minuman', self)
-        self.btnMinuman.setFont(self.font.textLabel)
-        self.btnMinuman.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnMinuman.clicked.connect(self.button2)
-
-        self.btnTransaksi = QPushButton('Transaksi', self)
-        self.btnTransaksi.setFont(self.font.textLabel)
-        self.btnTransaksi.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnTransaksi.clicked.connect(self.button3)
+        self.btnTambahSaldo = QPushButton('Tambah Saldo', self)
+        self.btnTambahSaldo.setFont(self.font.textLabel)
+        self.btnTambahSaldo.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnTambahSaldo.clicked.connect(lambda: self.right_widget.setCurrentIndex(1))
 
         self.btnLogout = QPushButton('Logout', self)
         self.btnLogout.setObjectName("logout")
         self.btnLogout.setFont(self.font.textLabel)
         self.btnLogout.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnLogout.clicked.connect(self.buttonLogout)
+
         # Widgets
         self.textNama = QLabel("Andisul")
         self.textNama.setFont(self.font.textTitle)
-        self.textUang = QLabel("Rp. 2.000.000")
-        self.textUang.setFont(self.font.textSubtitle)
-
-        self.cmbPenjual = QComboBox()
-        self.cmbPenjual.addItem("Lapak Nenek")
-        self.cmbPenjual.addItem("Lapak Bude")
-        self.cmbPenjual.setFixedHeight(35)
 
         self.frame = QFrame()
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
         left_layout = QVBoxLayout(self.frame)
         left_layout.addWidget(self.textNama)
-        left_layout.addWidget(self.textUang)
-        left_layout.addWidget(self.cmbPenjual)
         left_layout.addStretch(1)
-        left_layout.addWidget(self.btnMakanan)
-        left_layout.addWidget(self.btnMinuman)
-        left_layout.addWidget(self.btnTransaksi)
+        left_layout.addWidget(self.btnManajemenAkun)
+        left_layout.addWidget(self.btnTambahSaldo)
         left_layout.addStretch(1)
         left_layout.addWidget(self.btnLogout)
         left_layout.addStretch(0)
@@ -150,36 +137,15 @@ class Admin(QMainWindow):
 
         self.right_widget.addTab(self.tab1, '')
         self.right_widget.addTab(self.tab2, '')
-        self.right_widget.addTab(self.tab3, '')
         self.right_widget.setCurrentIndex(0)
         self.right_widget.setStyleSheet(self.style)
 
         return self.right_widget
 
-    def button1(self):
-        self.right_widget.setCurrentIndex(0)
-
-    def button2(self):
-        self.right_widget.setCurrentIndex(1)
-
-    def button3(self):
-        self.right_widget.setCurrentIndex(2)
-
     def buttonLogout(self):
-        from Login import Login
-
+        from src.Views.Login import Login
         self.back = Login()
         self.parent().setCentralWidget(self.back)
-
-    def editAkun(self):
-        return LihatPenjual()
-
-
-    def minumanUi(self):
-        return LihatAdmin()
-
-    def transaksiUi(self):
-        return LihatPembeli()
 
     def fontTemplate(self):
         self.textTitle = QFont()
