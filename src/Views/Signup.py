@@ -143,7 +143,7 @@ class Signup(QWidget):
         password = self.formPassword.text()
         jenisAkun = self.formJenisAkun.currentText()
 
-        if jenisAkun == "Admin":
+        if jenisAkun == "Admin" and (nama != "" and email != "" and password != ""):
             print("masuk ke 1")
             try:
                 AdminOrm(nama, email, password, jenisAkun).insert()
@@ -158,7 +158,7 @@ class Signup(QWidget):
                 msg.setWindowTitle("Error")
                 msg.exec_()
 
-        elif jenisAkun == "Penjual":
+        elif jenisAkun == "Penjual" and (nama != "" and email != "" and password != ""):
             print("masuk ke 2")
             try:
                 PenjualOrm(nama, email, password, jenisAkun, 0).insert()
@@ -172,7 +172,7 @@ class Signup(QWidget):
                 msg.setText(e)
                 msg.setWindowTitle("Error")
                 msg.exec_()
-        elif jenisAkun == "Pembeli":
+        elif jenisAkun == "Pembeli" and (nama != "" and email != "" and password != ""):
             print("masuk ke 3")
             try:
                 PembeliOrm(nama, email, password, jenisAkun, 0).insert()
@@ -186,6 +186,12 @@ class Signup(QWidget):
                 msg.setText(e)
                 msg.setWindowTitle("Error")
                 msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("isi kolomnya bro")
+            msg.setWindowTitle("Error")
+            msg.exec_()
 
     def fontTemplate(self):
         self.textTitle = QFont()
