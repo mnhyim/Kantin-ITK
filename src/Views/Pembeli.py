@@ -1,14 +1,19 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
+from Pembeli_Minuman import PembeliMinuman
 
 class Pembeli(QMainWindow):
     def __init__(self):
-        super().__init__()
+        super(Pembeli, self).__init__()
 
         self.font = self.fontTemplate()
+
+        self.tab1 = self.makananUi()
+        self.tab2 = self.minumanUi()
+        self.tab3 = self.transaksiUi()
 
         main_layout = QHBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
@@ -66,15 +71,35 @@ class Pembeli(QMainWindow):
             font-size: 20px;
             fontweight: medium;
         }
+        QComboBox{
+            background-color: #fff;
+            color: #333;
+            border: none;
+            border-radius: 4;
+        }
         """
 
         # Buttons
         self.btnMakanan = QPushButton('Makanan', self)
         self.btnMakanan.setFont(self.font.textLabel)
+        self.btnMakanan.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnMakanan.clicked.connect(self.button1)
+
         self.btnMinuman = QPushButton('Minuman', self)
         self.btnMinuman.setFont(self.font.textLabel)
+        self.btnMinuman.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnMinuman.clicked.connect(self.button2)
+
         self.btnTransaksi = QPushButton('Transaksi', self)
         self.btnTransaksi.setFont(self.font.textLabel)
+        self.btnTransaksi.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnTransaksi.clicked.connect(self.button3)
+
+        self.btnLogout = QPushButton('Logout', self)
+        self.btnLogout.setObjectName("logout")
+        self.btnLogout.setFont(self.font.textLabel)
+        self.btnLogout.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnLogout.clicked.connect(self.buttonLogout)
         # Widgets
         self.textNama = QLabel("Andisul")
         self.textNama.setFont(self.font.textTitle)
@@ -84,7 +109,8 @@ class Pembeli(QMainWindow):
         self.cmbPenjual = QComboBox()
         self.cmbPenjual.addItem("Lapak Nenek")
         self.cmbPenjual.addItem("Lapak Bude")
-
+        self.cmbPenjual.setFixedHeight(35)
+        
         self.frame = QFrame()
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
@@ -97,6 +123,8 @@ class Pembeli(QMainWindow):
         left_layout.addWidget(self.btnMinuman)
         left_layout.addWidget(self.btnTransaksi)
         left_layout.addStretch(1)
+        left_layout.addWidget(self.btnLogout)
+        left_layout.addStretch(0)
 
         left_widget = QWidget()
         left_widget.setStyleSheet(self.stylesheet)
@@ -104,11 +132,65 @@ class Pembeli(QMainWindow):
         return left_widget
 
     def rightSide(self):
+        self.style = """
+        QTabBar::tab{
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        """
         self.right_widget = QTabWidget()
         self.right_widget.tabBar().setObjectName("mainTab")
+
+        self.right_widget.addTab(self.tab1, '')
+        self.right_widget.addTab(self.tab2, '')
+        self.right_widget.addTab(self.tab3, '')
         self.right_widget.setCurrentIndex(0)
-        self.right_widget.setStyleSheet('''QTabBar::tab{width: 0; height: 0; margin: 0; padding: 0; border: none;}''')
+        self.right_widget.setStyleSheet(self.style)
+
         return self.right_widget
+
+    def button1(self):
+        self.right_widget.setCurrentIndex(0)
+    
+    def button2(self):
+        self.right_widget.setCurrentIndex(1)
+
+    def button3(self):
+        self.right_widget.setCurrentIndex(2)
+
+    def buttonLogout(self):
+        from Login import Login
+
+        self.back = Login()
+        self.parent().setCentralWidget(self.back)
+
+    def makananUi(self):
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(QLabel('PAGE MAKANAN'))
+        main_layout.addStretch(5)
+        main = QWidget()
+        main.setLayout(main_layout)
+        return main
+
+    def minumanUi(self):
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(QLabel('PAGE MINUMAN'))
+        main_layout.addStretch(5)
+        main = QWidget()
+        main.setLayout(main_layout)
+        return main
+
+    def transaksiUi(self):
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(QLabel('PAGE TRANSAKSI'))
+        main_layout.addStretch(5)
+        main = QWidget()
+        main.setLayout(main_layout)
+        return main
+
 
     def fontTemplate(self):
         self.textTitle = QFont()
