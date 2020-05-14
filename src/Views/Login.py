@@ -25,14 +25,17 @@ class Login(QWidget):
             color: #fff;
             font-family: 'Open Sans';
         }
-        QFrame{
+        QFrame#frameBg{
             background-color: #5f6caf;
+        }
+        QLabel{
+            background-color: rgba(0,0,0,0);
+            color: #eee;
         }
         QLineEdit{
             border: 2px solid transparent;
             border-radius: 4;
             color: #333;
-
         }
         QLineEdit::focus{
             border: 2px solid rgba(255, 133, 102, .95);
@@ -75,7 +78,7 @@ class Login(QWidget):
 
         self.frame = QFrame(self.centralWidget)
         self.frame.setFixedSize(420, 900)
-        self.frame.setObjectName("frame")
+        self.frame.setObjectName("frameBg")
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
         self.teksLogin = QLabel("Login", self.frame)
