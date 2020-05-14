@@ -51,6 +51,16 @@ class Signup(QWidget):
         QPushButton#btnSignUp:focus{
             background-color: #ff9066;
         }
+        QPushButton#btnCancel{
+            background-color: #a84f36;
+        }
+        QPushButton#btnCancel:focus{
+            background-color: #6e3829;
+        }
+        QPushButton#btnCancel:hover{
+            background-color: #8f4935;
+        }
+        
         QComboBox#jenisAkun{
             color: #333;
             border: none;
@@ -134,11 +144,20 @@ class Signup(QWidget):
         self.btnSignUp = QPushButton("Sign Up", self.frame)
         self.btnSignUp.setObjectName("btnSignUp")
         self.btnSignUp.setGeometry(45, 600, 100, 20)
-        self.btnSignUp.resize(320, 45)
+        self.btnSignUp.resize(155, 35)
         self.font.textLabel.setPointSize(11)
         self.btnSignUp.setFont(self.font.textLabel)
         self.btnSignUp.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnSignUp.clicked.connect(lambda: self.signupUser())
+
+        self.btnCancel = QPushButton("Cancel", self.frame)
+        self.btnCancel.setObjectName("btnCancel")
+        self.btnCancel.setGeometry(210, 600, 0, 20)
+        self.btnCancel.resize(155, 35)
+        self.font.textLabel.setPointSize(11)
+        self.btnCancel.setFont(self.font.textLabel)
+        self.btnCancel.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnCancel.clicked.connect(lambda: self.cancel())
 
     def rightSide(self):
         self.stylesheet = """
@@ -194,7 +213,6 @@ class Signup(QWidget):
                 msg.setText(e)
                 msg.setWindowTitle("Error")
                 msg.exec_()
-
         elif jenisAkun == "Penjual" and (nama != "" and email != "" and password != ""):
             print("masuk ke 2")
             try:
@@ -238,6 +256,10 @@ class Signup(QWidget):
             msg.setWindowTitle("Error")
             msg.exec_()
 
+    def cancel(self):
+        from src.Views.Login import Login
+        loginScreen = Login()
+        self.parent().setCentralWidget(loginScreen)
     def fontTemplate(self):
         self.textTitle = QFont()
         self.textTitle.setPointSize(24)
