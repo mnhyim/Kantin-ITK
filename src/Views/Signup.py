@@ -260,6 +260,7 @@ class Signup(QWidget):
         from src.Views.Login import Login
         loginScreen = Login()
         self.parent().setCentralWidget(loginScreen)
+
     def fontTemplate(self):
         self.textTitle = QFont()
         self.textTitle.setPointSize(24)
