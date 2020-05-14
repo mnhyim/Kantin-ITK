@@ -9,7 +9,7 @@ from src.Class.Autentikasi import Autentikasi
 from src.Views.Admin_Lihat_Admin import Admin
 from src.Views.Pembeli import Pembeli
 from src.Views.Signup import Signup
-
+from src.Views.Penjual_Tambah_Menu import TambahMenu
 
 class Login(QWidget):
     def __init__(self):
@@ -188,9 +188,9 @@ class Login(QWidget):
 
             elif auth.getRoleLogin().value == 2:
                 pass
-                # print(auth.getRoleLogin().name)
-                # self.PenjualScreen = Penjual()
-                # self.parent().setCentralWidget(self.PenjualScreen)
+                print(auth.getRoleLogin().name)
+                self.PenjualScreen = TambahMenu()
+                self.parent().setCentralWidget(self.PenjualScreen)
 
             elif auth.getRoleLogin().value == 3:
                 print(auth.getRoleLogin().name)
