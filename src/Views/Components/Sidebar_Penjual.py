@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-class Sidebar(QWidget):
+class Sidebar(QMainWindow):
     def __init__(self, *args, **kargs):
         super(Sidebar, self).__init__(*args, **kargs)
 
@@ -84,6 +84,11 @@ class Sidebar(QWidget):
         self.btnEditMenu.setGeometry(0, 280, 300, 80)
         self.btnEditMenu.setObjectName("edit")
         self.btnEditMenu.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.btnHapusMenu = QPushButton("Hapus Menu", self.frame)
+        self.btnHapusMenu.setGeometry(0, 280, 300, 80)
+        self.btnHapusMenu.setObjectName("hapus")
+        self.btnHapusMenu.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.btnDataKas = QPushButton("Data Kas", self.frame)
         self.btnDataKas.setGeometry(0, 360, 300, 80)
