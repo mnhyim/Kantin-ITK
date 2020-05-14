@@ -151,6 +151,10 @@ class Signup(QWidget):
                 msg.setWindowTitle("Success")
                 msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
                 msg.exec_()
+
+                from src.Views.Login import Login
+                loginScreen = Login()
+                self.parent().setCentralWidget(loginScreen)
             except Exception as e:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Warning)
@@ -166,6 +170,10 @@ class Signup(QWidget):
                 msg.setWindowTitle("Success")
                 msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
                 msg.exec_()
+
+                from src.Views.Login import Login
+                loginScreen = Login()
+                self.parent().setCentralWidget(loginScreen)
             except Exception as e:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Warning)
@@ -180,6 +188,10 @@ class Signup(QWidget):
                 msg.setWindowTitle("Success")
                 msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
                 msg.exec_()
+
+                from src.Views.Login import Login
+                loginScreen = Login()
+                self.parent().setCentralWidget(loginScreen)
             except Exception as e:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Warning)
