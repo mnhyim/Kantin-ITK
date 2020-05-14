@@ -5,9 +5,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-class TambahAkun(QWidget):
+class EditAkun(QWidget):
     def __init__(self):
-        super(TambahAkun, self).__init__()
+        super(EditAkun, self).__init__()
 
         # self.sidebarUI()
         self.rightSide()
