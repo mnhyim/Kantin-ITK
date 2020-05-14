@@ -1,5 +1,6 @@
 import sys
 
+from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -14,7 +15,7 @@ class Signup(QWidget):
 
         layout = QHBoxLayout()
         layout.addItem(self.leftSide())
-        # layout.addItem(self.rightSide())
+        layout.addItem(self.rightSide())
 
     def leftSide(self):
         self.stylesheet = """
@@ -72,7 +73,7 @@ class Signup(QWidget):
         self.teksLogin.setFont(self.font.textTitle)
         self.teksLogin.setGeometry(150, 80, 130, 50)
 
-        self.ketLogin = QLabel("Silahkan Daftar terlebih dahulu", self.frame)
+        self.ketLogin = QLabel("Silahkan daftar terlebih dahulu", self.frame)
         self.ketLogin.setGeometry(50, 140, 300, 50)
         self.ketLogin.setScaledContents(True)
         self.ketLogin.setFont(self.font.textSubtitle)
@@ -136,6 +137,36 @@ class Signup(QWidget):
         self.btnSignUp.setFont(self.font.textLabel)
         self.btnSignUp.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnSignUp.clicked.connect(lambda: self.signupUser())
+
+    def rightSide(self):
+        self.stylesheet = """
+               QWidget{
+                   color: #333;
+                   font-family: 'Open Sans';
+                   background-color: rgba(0,0,0,0)
+               }
+               QLabel{
+                   font-family: 'Raleway';
+               }
+               """
+        self.font = self.fontTemplate()
+
+        self.centralWidget = QWidget(self)
+        self.centralWidget.setObjectName("rightWidget")
+        self.centralWidget.move(420, 0)
+        self.centralWidget.setStyleSheet(self.stylesheet)
+        self.centralWidget.setFixedSize(950, 720)
+
+        self.frame = QFrame(self.centralWidget)
+        self.frame.setFixedSize(950, 720)
+        self.frame.setObjectName("frame")
+        self.frame.setLayoutDirection(Qt.LeftToRight)
+
+        self.lb = QLabel(self.frame)
+        self.pixmap = QtGui.QPixmap("../Assets/login_illustration.png")
+        self.lb.resize(self.width(), self.height())
+        self.lb.setPixmap(self.pixmap.scaled(self.lb.size(), QtCore.Qt.KeepAspectRatio))
+        self.lb.setGeometry(250, 250, self.width(), self.height())
 
     def signupUser(self):
         nama = self.formNama.text()

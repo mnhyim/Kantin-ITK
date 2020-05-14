@@ -1,5 +1,6 @@
 import sys
 
+from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -135,6 +136,7 @@ class Login(QWidget):
         QWidget{
             color: #333;
             font-family: 'Open Sans';
+            background-color: rgba(0,0,0,0)
         }
         QLabel{
             font-family: 'Raleway';
@@ -165,6 +167,12 @@ class Login(QWidget):
         self.ket.setFont(self.font.textSubtitle)
         self.ket.setWordWrap(True)
         self.ket.setAlignment(Qt.AlignJustify)
+
+        self.lb = QLabel(self.frame)
+        self.pixmap = QtGui.QPixmap("../Assets/login_illustration.png")
+        self.lb.resize(self.width(), self.height())
+        self.lb.setPixmap(self.pixmap.scaled(self.lb.size(), QtCore.Qt.KeepAspectRatio))
+        self.lb.setGeometry(250, 250, self.width(), self.height())
 
     def login(self, email, password):
         auth = Autentikasi(email, password)
