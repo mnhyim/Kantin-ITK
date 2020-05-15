@@ -1,11 +1,8 @@
-import sys
-
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-from src.Class.EnumClass import JenisAkun
 from src.ORM.ormAkun import *
 
 
@@ -184,7 +181,7 @@ class Signup(QWidget):
         self.frame.setLayoutDirection(Qt.LeftToRight)
 
         self.lb = QLabel(self.frame)
-        self.pixmap = QtGui.QPixmap("../Assets/login_illustration.png")
+        self.pixmap = QtGui.QPixmap("../../Assets/login_illustration.png")
         self.lb.resize(self.width(), self.height())
         self.lb.setPixmap(self.pixmap.scaled(self.lb.size(), QtCore.Qt.KeepAspectRatio))
         self.lb.setGeometry(250, 250, self.width(), self.height())
@@ -204,7 +201,7 @@ class Signup(QWidget):
                 msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
                 msg.exec_()
 
-                from src.Views.Login import Login
+                from src.Views._old.Login import Login
                 loginScreen = Login()
                 self.parent().setCentralWidget(loginScreen)
             except Exception as e:
@@ -222,7 +219,7 @@ class Signup(QWidget):
                 msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
                 msg.exec_()
 
-                from src.Views.Login import Login
+                from src.Views._old.Login import Login
                 loginScreen = Login()
                 self.parent().setCentralWidget(loginScreen)
             except Exception as e:
@@ -240,7 +237,7 @@ class Signup(QWidget):
                 msg.setText("User {} berhasil dibuat dengan role {}".format(nama, jenisAkun))
                 msg.exec_()
 
-                from src.Views.Login import Login
+                from src.Views._old.Login import Login
                 loginScreen = Login()
                 self.parent().setCentralWidget(loginScreen)
             except Exception as e:
@@ -257,7 +254,7 @@ class Signup(QWidget):
             msg.exec_()
 
     def cancel(self):
-        from src.Views.Login import Login
+        from src.Views._old.Login import Login
         loginScreen = Login()
         self.parent().setCentralWidget(loginScreen)
 

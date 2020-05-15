@@ -1,11 +1,10 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import sys
 
-from src.Views.Pembeli_Minuman import MenuMinuman
-from src.Views.Pembeli_Makanan import MenuMakanan
-from src.Views.Pembeli_Transaksi import PembeliTransaksi
+from src.Views._old.Pembeli_Minuman import MenuMinuman
+from src.Views._old.Pembeli_Makanan import MenuMakanan
+from src.Views._old.Pembeli_Transaksi import PembeliTransaksi
 
 class Pembeli(QMainWindow):
     def __init__(self):
@@ -160,14 +159,14 @@ class Pembeli(QMainWindow):
 
 
     def buttonLogout(self):
-        from src.Views.Login import Login
+        from src.Views._old.Login import Login
 
         self.back = Login()
         self.parent().setCentralWidget(self.back)
 
     def fontTemplate(self):
         self.textTitle = QFont()
-        self.textTitle.setPointSize(24)
+        self.textTitlLoginWindowe.setPointSize(24)
         self.textTitle.setWeight(65)
 
         self.textSubtitle = QFont()

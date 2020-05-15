@@ -1,11 +1,10 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import sys
 
-from src.Views.Penjual_Tambah_Menu import TambahMenu
-from src.Views.Penjual_Edit_Menu import EditMenu
-from src.Views.Penjual_Hapus_Menu import HapusMenu
+from src.Views._old.Penjual_Tambah_Menu import TambahMenu
+from src.Views._old.Penjual_Edit_Menu import EditMenu
+from src.Views._old.Penjual_Hapus_Menu import HapusMenu
 
 
 class PenjualUi(QMainWindow):
@@ -155,7 +154,7 @@ class PenjualUi(QMainWindow):
         return self.right_widget
 
     def buttonLogout(self):
-        from src.Views.Login import Login
+        from src.Views._old.Login import Login
 
         self.back = Login()
         self.parent().setCentralWidget(self.back)

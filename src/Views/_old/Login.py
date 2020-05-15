@@ -1,15 +1,13 @@
-import sys
-
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 from src.Class.Autentikasi import Autentikasi
-from src.Views.Admin import Admin
-from src.Views.Pembeli import Pembeli
-from src.Views.Signup import Signup
-from src.Views.Penjual import PenjualUi
+from src.Views._old.Admin import Admin
+from src.Views._old.Pembeli import Pembeli
+from src.Views._old.Signup import Signup
+from src.Views._old.Penjual import PenjualUi
 
 class Login(QWidget):
     def __init__(self):
@@ -172,7 +170,7 @@ class Login(QWidget):
         self.ket.setAlignment(Qt.AlignJustify)
 
         self.lb = QLabel(self.frame)
-        self.pixmap = QtGui.QPixmap("../Assets/login_illustration.png")
+        self.pixmap = QtGui.QPixmap("../../Assets/login_illustration.png")
         self.lb.resize(self.width(), self.height())
         self.lb.setPixmap(self.pixmap.scaled(self.lb.size(), QtCore.Qt.KeepAspectRatio))
         self.lb.setGeometry(250, 250, self.width(), self.height())

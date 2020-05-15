@@ -1,11 +1,9 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import sys
 
-from src.Views.Admin_LihatAdmin import LihatAdmin
-from src.Views.Admin_LihatPembeli import LihatPembeli
-from src.Views.Admin_LihatPenjual import LihatPenjual
+from src.Views._old.Admin_LihatPembeli import LihatPembeli
+from src.Views._old.Admin_LihatPenjual import LihatPenjual
 
 
 class Admin(QMainWindow):
@@ -143,7 +141,7 @@ class Admin(QMainWindow):
         return self.right_widget
 
     def buttonLogout(self):
-        from src.Views.Login import Login
+        from src.Views._old.Login import Login
         self.back = Login()
         self.parent().setCentralWidget(self.back)
 
