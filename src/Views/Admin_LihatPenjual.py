@@ -64,7 +64,7 @@ class LihatPenjual(QWidget):
 
         self.centralWidget = QWidget(self)
         self.centralWidget.setObjectName("mainbar")
-        self.centralWidget.move(400, 0)
+        # self.centralWidget.move(400, 0)
         self.centralWidget.setStyleSheet(self.stylesheet)
         self.centralWidget.setFixedSize(720, 720)
 

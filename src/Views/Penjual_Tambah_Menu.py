@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+# from src.Class.Penjual import Penjual
+
 
 class TambahMenu(QMainWindow):
     def __init__(self):
@@ -43,7 +45,7 @@ class TambahMenu(QMainWindow):
 
         self.centralWidget = QWidget(self)
         self.centralWidget.setObjectName("mainbar")
-        self.centralWidget.move(400, 0)
+        # self.centralWidget.move(400, 0)
         self.centralWidget.setStyleSheet(self.stylesheet)
         self.centralWidget.setFixedSize(720, 720)
 

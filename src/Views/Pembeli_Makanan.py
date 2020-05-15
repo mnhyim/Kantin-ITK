@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-from adminlihatpenjual import LihatPenjual
+# from adminlihatpenjual import LihatPenjual
 
 class MenuMakanan(QWidget):
     def __init__(self):
@@ -184,12 +184,7 @@ class MenuMakanan(QWidget):
 #button
         font.setPointSize(10)
 
-        self.btnEdit = QPushButton("Edit Menu", self.centralWidget)
-        self.btnEdit.setObjectName("edit")
-        self.btnEdit.setFont(font)
-        self.btnEdit.move(220,660)
-
-        self.btnTambah = QPushButton("Tambah Menu", self.centralWidget)
+        self.btnTambah = QPushButton("Selesai", self.centralWidget)
         self.btnTambah.setObjectName("tambah")
         self.btnTambah.setFont(font)
         self.btnTambah.move(400,660)
