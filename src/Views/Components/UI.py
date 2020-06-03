@@ -50,28 +50,28 @@ class customPushButton(QPushButton):
             }
             
             QPushButton#primary{
-                background-color: #243E79;
+                background-color: #2B4A6F;
                 color: #eee;
             }
             QPushButton#primary:hover{
-                background-color: #566EA4;
+                background-color: #4B688B;
                 color: #eee;
             }
             QPushButton#primary:pressed{
-                background-color:#273961;
+                background-color:#143153;
                 color: #eee;
             }
             
             QPushButton#secondary{
-                background-color: #f28b38;
+                background-color: #AA7E39;
                 color: #eee;
             }
             QPushButton#secondary:hover{
-                background-color: #ff943d;
+                background-color: #D4AB6A;
                 color: #eee;
             }
             QPushButton#secondary:pressed{
-                background-color: #e08234;
+                background-color: #805615;
                 color: #eee;
             }
             """

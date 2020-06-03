@@ -31,7 +31,7 @@ class Left(QWidget):
         self.bgFrame.setObjectName("bgFrame")
 
         a = customPushButton(isi="Primary", tipe="primary", parent=self)
-        b = customPushButton(isi="Primary", tipe="secondary", parent=self)
+        b = customPushButton(isi="Secondary", tipe="secondary", parent=self)
 
         self.vLayout = QVBoxLayout(self.bgFrame)
         self.vLayout.addWidget(a)
