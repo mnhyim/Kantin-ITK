@@ -58,13 +58,21 @@ class customPushButton(QPushButton):
                 color: #eee;
             }
             QPushButton#primary:pressed{
-                background-color:#243E79;
+                background-color:#273961;
                 color: #eee;
             }
             
             QPushButton#secondary{
+                background-color: #f28b38;
+                color: #eee;
             }
-            QPushButton#simpan::hover{
+            QPushButton#secondary:hover{
+                background-color: #ff943d;
+                color: #eee;
+            }
+            QPushButton#secondary:pressed{
+                background-color: #e08234;
+                color: #eee;
             }
             """
         self.setText(isi)
